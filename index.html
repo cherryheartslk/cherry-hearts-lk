@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cherry Hearts LK | Cute Stationery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #fffafb;
+            --primary-pink: #ffb7c5;
+            --accent-red: #ff4d6d;
+            --text-color: #5a4a4b;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Quicksand', sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        header {
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #ffe5ec, #ffc2d1);
+            border-bottom: 2px dashed var(--primary-pink);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--accent-red);
+            margin: 0;
+            letter-spacing: 2px;
+        }
+
+        p.tagline {
+            font-size: 1.1rem;
+            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        /* Search Bar Styling */
+        .search-container {
+            margin-top: 25px;
+        }
+
+        .search-input {
+            width: 100%;
+            max-width: 400px;
+            padding: 12px 20px;
+            border: 2px solid var(--primary-pink);
+            border-radius: 30px;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1rem;
+            outline: none;
+            background-color: #ffffff;
+            color: var(--text-color);
+            box-shadow: 0 4px 10px rgba(255, 183, 197, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            border-color: var(--accent-red);
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.15);
+        }
+
+        /* Payment Badge Styling */
+        .payment-info {
+            margin-top: 20px;
+            display: inline-flex;
+            gap: 15px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: 1px solid var(--primary-pink);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .payment-badge {
+            color: var(--accent-red);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .product-card {
+            background: var(--card-bg);
+            border: 2px solid #ffe5ec;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 8px 20px rgba(255, 183, 197, 0.15);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 180px;
+            background-color: #fff0f3;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .product-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .product-price {
+            color: var(--accent-red);
+            font-weight: 700;
+            font-size: 1.15rem;
+            margin-bottom: 15px;
+        }
+
+        .buy-btn {
+            background-color: var(--accent-red);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .buy-btn:hover {
+            background-color: #e63956;
+        }
+
+        footer {
+            margin-top: 60px;
+            padding: 20px;
+            font-size: 0.9rem;
+            border-top: 1px solid #ffe5ec;
+            color: #8c787a;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🍒 Cherry Hearts LK 🎀</h1>
+        <p class="tagline">Sweet, coquette & kawaii stationery designed to make your days dreamy.</p>
+        
+        <!-- Payment Methods Banner -->
+        <div class="payment-info">
+            <span class="payment-badge">💳 Card Payments Accepted</span>
+            <span>•</span>
+            <span class="payment-badge">🏦 Bank Transfers Accepted</span>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-container">
+            <input type="text" id="searchInput" class="search-input" placeholder="🔍 Search cute stationery..." onkeyup="searchProducts()">
+        </div>
+    </header>
+
+    <div class="container">
+        <h2>✨ Featured Collections ✨</h2>
+        
+        <div class="products-grid" id="productsGrid">
+            <!-- Product 1: Scented Kuromi Erasers -->
+            <div class="product-card" data-name="scented kuromi erasers">
+                <div>
+                    <div class="product-img">💜</div>
+                    <div class="product-title">Scented Kuromi Erasers</div>
+                    <div class="product-price">LKR 350</div>
+                </div>
+                <a href="https://wa.me/94772983432?text=Hi!%20I%20would%20like%20to%20order%20the%20Scented%20Kuromi%20Erasers%20(LKR%20350)." class="buy-btn" target="_blank">Order via WhatsApp</a>
+            </div>
+
+            <!-- Product 2: Scented Labubu Erasers -->
+            <div class="product-card" data-name="scented labubu erasers">
+                <div>
+                    <div class="product-img">👾</div>
+                    <div class="product-title">Scented Labubu Erasers</div>
+                    <div class="product-price">LKR 350</div>
+                </div>
+                <a href="https://wa.me/94772983432?text=Hi!%20I%20would%20like%20to%20order%20the%20Scented%20Labubu%20Erasers%20(LKR%20350)." class="buy-btn" target="_blank">Order via WhatsApp</a>
+            </div>
+
+            <!-- Product 3: Sanrio Magic Box Eraser -->
+            <div class="product-card" data-name="sanrio magic box eraser">
+                <div>
+                    <div class="product-img">✨</div>
+                    <div class="product-title">Sanrio Magic Box Eraser</div>
+                    <div class="product-price">LKR 550</div>
+                </div>
+                <a href="https://wa.me/94772983432?text=Hi!%20I%20would%20like%20to%20order%20the%20Sanrio%20Magic%20Box%20Eraser%20(LKR%20550)." class="buy-btn" target="_blank">Order via WhatsApp</a>
+            </div>
+
+            <!-- Product 4: Noodle Eraser (Red) -->
+            <div class="product-card" data-name="noodle eraser red">
+                <div>
+                    <div class="product-img">🍜</div>
+                    <div class="product-title">Noodle Eraser - Red</div>
+                    <div class="product-price">LKR 450</div>
+                </div>
+                <a href="https://wa.me/94772983432?text=Hi!%20I%20would%20like%20to%20order%20the%20Noodle%20Eraser%20-%20Red%20(LKR%20450)." class="buy-btn" target="_blank">Order via WhatsApp</a>
+            </div>
+
+            <!-- Product 5: Noodle Eraser (Orange) -->
+            <div class="product-card" data-name="noodle eraser orange">
+                <div>
+                    <div class="product-img">🍜</div>
+                    <div class="product-title">Noodle Eraser - Orange</div>
+                    <div class="product-price">LKR 450</div>
+                </div>
+                <a href="https://wa.me/94772983432?text=Hi!%20I%20would%20like%20to%20order%20the%20Noodle%20Eraser%20-%20Orange%20(LKR%20450)." class="buy-btn" target="_blank">Order via WhatsApp</a>
+            </div>
+
+            <!-- Product 6: Noodle Eraser (Green) -->
+            <div class="product-card" data-name="noodle eraser green">
+                <div>
+                    <div class="product-img">🍜</div>
+                    <div class="product-title">Noodle Eraser - Green</div>
+                    <div class="product-price">LKR 450</div>
+                </div>
+                <a href="https://wa.me/94772983432?text=Hi!%20I%20would%20like%20to%20order%20the%20Noodle%20Eraser%20-%20Green%20(LKR%20450)." class="buy-btn" target="_blank">Order via WhatsApp</a>
+            </div>
+
+            <!-- Product 7: Noodle Eraser (Blue) -->
+            <div class="product-card" data-name="noodle eraser blue">
+                <div>
+                    <div class="product-img">🍜</div>
+                    <div class="product-title">Noodle Eraser - Blue</div>
+                    <div class="product-price">LKR 450</div>
+                </div>
+                <a href="https://wa.me/94772983432?text=Hi!%20I%20would%20like%20to%20order%20the%20Noodle%20Eraser%20-%20Blue%20(LKR%20450)." class="buy-btn" target="_blank">Order via WhatsApp</a>
+            </div>
+
+            <!-- Product 8: Labubu 4 pcs erasers set -->
+            <div class="product-card" data-name="labubu 4 pcs erasers set">
+                <div>
+                    <div class="product-img">📦</div>
+                    <div class="product-title">Labubu 4 pcs Erasers Set</div>
+                    <div class="product-price">LKR 750</div>
+                </div>
+                <a href="https://wa.me/94772983432?text=Hi!%20I%20would%20like%20to%20order%20the%20Labubu%204%20pcs%20Erasers%20Set%20(LKR%20750)." class="buy-btn" target="_blank">Order via WhatsApp</a>
+            </div>
+
+            <!-- Product 9: Labubu Single Eraser -->
+            <div class="product-card" data-name="labubu aesthetic eraser single">
+                <div>
+                    <div class="product-img">🧸</div>
+                    <div class="product-title">Labubu Aesthetic Eraser (Single)</div>
+                    <div class="product-price">LKR 250</div>
+                </div>
+                <a href="https://wa.me/94772983432?text=Hi!%20I%20would%20like%20to%20order%20the%20Labubu%20Aesthetic%20Eraser%20(LKR%20250)." class="buy-btn" target="_blank">Order via WhatsApp</a>
+            </div>
+
+            <!-- Product 10: Coquette Bow Memo Pad -->
+            <div class="product-card" data-name="coquette bow memo pad">
+                <div>
+                    <div class="product-img">🎀</div>
+                    <div class="product-title">Coquette Bow Memo Pad</div>
+                    <div class="product-price">LKR 650</div>
+                </div>
+                <a href="https://wa.me/94772983432?text=Hi!%20I%20would%20like%20to%20order%20the%20Coquette%20Bow%20Memo%20Pad%20(LKR%20650)." class="buy-btn" target="_blank">Order via WhatsApp</a>
+            </div>
+
+            <!-- Product 11: Strawberry Lace Sticker Sheet -->
+            <div class="product-card" data-name="strawberry lace sticker sheet">
+                <div>
+                    <div class="product-img">🍓</div>
+                    <div class="product-title">Strawberry Lace Sticker Sheet</div>
+                    <div class="product-price">LKR 350</div>
+                </div>
+                <a href="https://wa.me/94772983432?text=Hi!%20I%20would%20like%20to%20order%20the%20Strawberry%20Lace%20Sticker%20Sheet%20(LKR%20350)." class="buy-btn" target="_blank">Order via WhatsApp</a>
+            </div>
+
+            <!-- Product 12: Pastel Heart Journaling Kit -->
+            <div class="product-card" data-name="pastel heart journaling kit">
+                <div>
+                    <div class="product-img">💌</div>
+                    <div class="product-title">Pastel Heart Journaling Kit</div>
+                    <div class="product-price">LKR 1,200</div>
+                </div>
+                <a href="https://wa.me/94772983432?text=Hi!%20I%20would%20like%20to%20order%20the%20Pastel%20Heart%20Journaling%20Kit%20(LKR%201,200)." class="buy-btn" target="_blank">Order via WhatsApp</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Cherry Hearts LK. Crafted with love & aesthetics. 🤍</p>
+    </footer>
+
+    <!-- Search Filtering Script -->
+    <script>
+        function searchProducts() {
+            let input = document.getElementById('searchInput').value.toLowerCase();
+            let cards = document.getElementsByClassName('product-card');
+
+            for (let i = 0; i < cards.length; i++) {
+                let name = cards[i].getAttribute('data-name');
+                if (name.includes(input)) {
+                    cards[i].style.display = "flex";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
