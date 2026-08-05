@@ -7,9 +7,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #fffafb;
+            --bg-color: #fdfbf7;
             --primary-pink: #ffb7c5;
-            --accent-red: #ff4d6d;
+            --accent-red: #ff6b8b;
             --text-color: #5a4a4b;
             --card-bg: #ffffff;
         }
@@ -24,9 +24,10 @@
         }
 
         header {
-            padding: 30px 20px;
-            background: linear-gradient(135deg, #ffe5ec, #ffc2d1);
-            border-bottom: 2px dashed var(--primary-pink);
+            padding: 35px 20px;
+            /* Pastel Rainbow Gradient */
+            background: linear-gradient(135deg, #ffd1dc, #ffecb6, #d0f4de, #c1f0f6, #e4c1f9);
+            border-bottom: 2px dashed #ffb7c5;
             position: relative;
         }
 
@@ -35,19 +36,21 @@
             color: var(--accent-red);
             margin: 0;
             letter-spacing: 2px;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
         }
 
         p.tagline {
             font-size: 1.05rem;
             margin-top: 8px;
             font-weight: 600;
+            color: #6d595a;
         }
 
         .cart-btn-header {
             position: absolute;
             top: 25px;
             right: 25px;
-            background: var(--accent-red);
+            background: linear-gradient(135deg, #ff9aa2, #ffb7b2);
             color: white;
             border: none;
             padding: 10px 18px;
@@ -55,7 +58,7 @@
             font-family: 'Quicksand', sans-serif;
             font-weight: 700;
             cursor: pointer;
-            box-shadow: 0 4px 10px rgba(255, 77, 109, 0.2);
+            box-shadow: 0 4px 10px rgba(255, 154, 162, 0.3);
         }
 
         .search-container {
@@ -66,14 +69,14 @@
             width: 100%;
             max-width: 400px;
             padding: 10px 18px;
-            border: 2px solid var(--primary-pink);
+            border: 2px solid #ffb7c5;
             border-radius: 30px;
             font-family: 'Quicksand', sans-serif;
             font-size: 0.95rem;
             outline: none;
             background-color: #ffffff;
             color: var(--text-color);
-            box-shadow: 0 4px 10px rgba(255, 183, 197, 0.1);
+            box-shadow: 0 4px 10px rgba(255, 183, 197, 0.15);
         }
 
         .container {
@@ -91,19 +94,25 @@
 
         .product-card {
             background: var(--card-bg);
-            border: 2px solid #ffe5ec;
+            border: 2px solid #e2ece9;
             border-radius: 20px;
             padding: 20px;
-            box-shadow: 0 8px 20px rgba(255, 183, 197, 0.15);
+            box-shadow: 0 8px 20px rgba(200, 220, 240, 0.15);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            border-color: #ffb7c5;
         }
 
         .product-img {
             width: 100%;
             height: 180px;
-            background-color: #fff0f3;
+            background-color: #f7f9f8;
             border-radius: 12px;
             margin-bottom: 15px;
             overflow: hidden;
@@ -136,7 +145,7 @@
         }
 
         .action-btn {
-            background-color: var(--accent-red);
+            background: linear-gradient(135deg, #ff9aa2, #ffb7b2);
             color: white;
             border: none;
             padding: 10px 20px;
@@ -144,12 +153,12 @@
             font-family: 'Quicksand', sans-serif;
             font-weight: 600;
             cursor: pointer;
-            transition: background 0.2s;
+            transition: opacity 0.2s;
             width: 100%;
         }
 
         .action-btn:hover {
-            background-color: #e63956;
+            opacity: 0.9;
         }
 
         /* Cart Modal Drawer Overlay */
@@ -184,7 +193,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 2px solid #ffe5ec;
+            border-bottom: 2px solid #ffd1dc;
             padding-bottom: 15px;
         }
 
@@ -208,12 +217,12 @@
             align-items: center;
             margin-bottom: 12px;
             font-size: 0.9rem;
-            border-bottom: 1px dashed #ffe5ec;
+            border-bottom: 1px dashed #ffd1dc;
             padding-bottom: 8px;
         }
 
         .remove-item {
-            color: #ff4d6d;
+            color: #ff6b8b;
             background: none;
             border: none;
             cursor: pointer;
@@ -221,8 +230,8 @@
         }
 
         .bank-box {
-            background: #fffafb;
-            border: 1px solid var(--primary-pink);
+            background: #fdfbf7;
+            border: 1px solid #ffb7c5;
             padding: 12px;
             border-radius: 12px;
             font-size: 0.85rem;
@@ -251,8 +260,9 @@
             margin-top: 60px;
             padding: 20px;
             font-size: 0.9rem;
-            border-top: 1px solid #ffe5ec;
+            border-top: 1px solid #ffd1dc;
             color: #8c787a;
+            background: linear-gradient(135deg, #fdfbf7, #fff5f7);
         }
     </style>
 </head>
@@ -402,7 +412,7 @@
                     <p><strong>Bank Name:</strong> Commercial Bank / BOC<br>
                     <strong>Account No:</strong> 1234567890<br>
                     <strong>Account Name:</strong> Cherry Hearts LK</p>
-                    <button class="action-btn" onclick="finishPaying()" style="background: #ffb7c5; color: #5a4a4b; font-weight: 700; margin-top: 5px;">I'm Done Paying</button>
+                    <button class="action-btn" onclick="finishPaying()" style="background: linear-gradient(135deg, #ffd1dc, #ffecb6); color: #5a4a4b; font-weight: 700; margin-top: 5px;">I'm Done Paying</button>
                 </div>
 
                 <!-- WhatsApp Upload Slip Button -->
