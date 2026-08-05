@@ -133,9 +133,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3.5rem;
             margin-bottom: 15px;
             overflow: hidden;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
         }
 
         .product-title {
@@ -194,7 +200,7 @@
         <div class="payment-info-box">
             <h3>💳 Accepted Payment Methods</h3>
             <ul>
-                <li><strong>Bank Transfer:</strong> Bank Name: [PEOPLES BANK], Acc No: [Your Acc Number], Name: [S D W RAJAPAKSHA]</li>
+                <li><strong>Bank Transfer:</strong> Bank Name: [Your Bank], Acc No: [Your Acc Number], Name: [Your Name]</li>
                 <li><strong>Card Payments:</strong> Accepted via WhatsApp checkout coordination.</li>
                 <li><em>After transferring or paying, please send your receipt/slip via WhatsApp along with your order!</em></li>
             </ul>
@@ -214,111 +220,105 @@
             <!-- 1. Hello Kitty Sticky Notes -->
             <div class="product-card" data-name="hello kitty sticky note pads">
                 <div>
-                    <div class="product-img">hello kitty sticky notes.jpg</div>
+                    <div class="product-img">
+                        <img src="hello kitty sticky notes.jpg.jpeg" alt="Hello Kitty Sticky Note Pads">
+                    </div>
                     <div class="product-title">Hello Kitty Sticky Note Pads</div>
                     <div class="product-desc">4 Variations (Red, Starry Purple, Strawberry, Lace)</div>
                     <div class="product-price">LKR 180</div>
                 </div>
-                <a href="https://wa.me/94772983432?text=Hi!%20I%20would%20like%20to%20order%20the%20Hello%20Kitty%20Sticky%20Note%20Pads%20(LKR%20450)." class="buy-btn" target="_blank">Order via WhatsApp</a>
+                <a href="https://wa.me/94772983432?text=Hi!%20I%20would%20like%20to%20order%20the%20Hello%20Kitty%20Sticky%20Note%20Pads%20(LKR%20180)." class="buy-btn" target="_blank">Order via WhatsApp</a>
             </div>
 
-            <!-- 2. Cute sanrio sticky note with pen -->
-            <div class="product-card" data-name="Cute sanrio sticky note with pen">
+            <!-- 2. Sanrio Sticky Note + Pen -->
+            <div class="product-card" data-name="sanrio sticky note pen cute pet garden">
                 <div>
-                    <div class="product-img">sanrio sticky notes</div>
-                    <div class="product-title">sanrio sticky note + Pen</div>
+                    <div class="product-img">
+                        <img src="sanrio sticky notes.jpeg" alt="Sanrio Sticky Note + Pen">
+                    </div>
+                    <div class="product-title">Sanrio Sticky Note + Pen</div>
                     <div class="product-desc">Includes matching ballpoint pen (Kuromi, My Melody, Cinnamoroll)</div>
                     <div class="product-price">LKR 200</div>
                 </div>
-                <a href="https://wa.me/94772983432?text=Hi!%20I%20would%20like%20to%20order%20the%20Cute%20Pet%20Garden%20Sticky%20Notes%20with%20Pen%20Sets%20(LKR%20650)." class="buy-btn" target="_blank">Order via WhatsApp</a>
+                <a href="https://wa.me/94772983432?text=Hi!%20I%20would%20like%20to%20order%20the%20Sanrio%20Sticky%20Note%20%2B%20Pen%20(LKR%20200)." class="buy-btn" target="_blank">Order via WhatsApp</a>
             </div>
 
-            <!-- 3. Kuromi Spiral Notebooks -->
-            <div class="product-card" data-name="kuromi spiral notebooks">
+            <!-- 3. Kuromi Notebooks -->
+            <div class="product-card" data-name="kuromi notebook">
                 <div>
-                    <div class="product-img">📓</div>
+                    <div class="product-img">
+                        <img src="kuromi notebook.jpeg" alt="Kuromi Notebook">
+                    </div>
                     <div class="product-title">Kuromi Spiral Notebooks</div>
                     <div class="product-desc">Mini top-spiral memo pads with shaped covers</div>
-                    <div class="product-price">LKR 400</div>
-                </div>
-                <a href="https://wa.me/94772983432?text=Hi!%20I%20would%20like%20to%20order%20the%20Kuromi%20Spiral%20Notebooks%20(LKR%20400)." class="buy-btn" target="_blank">Order via WhatsApp</a>
-            </div>
-
-            <!-- 4. Stitch Ruler & Bookmark Sets -->
-            <div class="product-card" data-name="stitch ruler bookmark sets">
-                <div>
-                    <div class="product-img">📏</div>
-                    <div class="product-title">Stitch Ruler & Bookmark Sets</div>
-                    <div class="product-desc">Transparent rulers with 3D silicone sliding characters</div>
-                    <div class="product-price">LKR 350</div>
-                </div>
-                <a href="https://wa.me/94772983432?text=Hi!%20I%20would%20like%20to%20order%20the%20Stitch%20Ruler%20%26%20Bookmark%20Sets%20(LKR%20350)." class="buy-btn" target="_blank">Order via WhatsApp</a>
-            </div>
-
-            <!-- 5. Capybara Ruler & Bookmark Sets -->
-            <div class="product-card" data-name="capybara ruler bookmark sets">
-                <div>
-                    <div class="product-img">🪵</div>
-                    <div class="product-title">Capybara Ruler & Bookmark Sets</div>
-                    <div class="product-desc">Translucent nature-themed rulers with 3D Capybara figures</div>
-                    <div class="product-price">LKR 350</div>
-                </div>
-                <a href="https://wa.me/94772983432?text=Hi!%20I%20would%20like%20to%20order%20the%20Capybara%20Ruler%20%26%20Bookmark%20Sets%20(LKR%20350)." class="buy-btn" target="_blank">Order via WhatsApp</a>
-            </div>
-
-            <!-- 6. Roller Correction Tapes -->
-            <div class="product-card" data-name="roller correction tapes">
-                <div>
-                    <div class="product-img">✏️</div>
-                    <div class="product-title">Roller Correction Tapes</div>
-                    <div class="product-desc">Festive character-themed ergonomic grip correction tapes</div>
                     <div class="product-price">LKR 300</div>
                 </div>
-                <a href="https://wa.me/94772983432?text=Hi!%20I%20would%20like%20to%20order%20the%20Roller%20Correction%20Tapes%20(LKR%20300)." class="buy-btn" target="_blank">Order via WhatsApp</a>
+                <a href="https://wa.me/94772983432?text=Hi!%20I%20would%20like%20to%20order%20the%20Kuromi%20Notebooks%20(LKR%20400)." class="buy-btn" target="_blank">Order via WhatsApp</a>
             </div>
 
-            <!-- 7. Gradient Rabbit Eraser Sets -->
-            <div class="product-card" data-name="gradient rabbit eraser sets">
+            <!-- 4. Kuromi Pink Sticky Notes -->
+            <div class="product-card" data-name="kuromi pink sticky notes booklet">
                 <div>
-                    <div class="product-img">🐰</div>
-                    <div class="product-title">Gradient Rabbit Eraser Sets</div>
-                    <div class="product-desc">Colorful gradient core block erasers in multi-packs</div>
-                    <div class="product-price">LKR 500</div>
+                    <div class="product-img">
+                        <img src="kuromi purp sn.jpeg" alt="Kuromi Pink Sticky Notes">
+                    </div>
+                    <div class="product-title">Kuromi Multi-Sticky Booklet (Pink)</div>
+                    <div class="product-desc">Coquette pink checkered theme with ribbons & sweet treats</div>
+                    <div class="product-price">LKR 250</div>
                 </div>
-                <a href="https://wa.me/94772983432?text=Hi!%20I%20would%20like%20to%20order%20the%20Gradient%20Rabbit%20Eraser%20Sets%20(LKR%20500)." class="buy-btn" target="_blank">Order via WhatsApp</a>
+                <a href="https://wa.me/94772983432?text=Hi!%20I%20would%20like%20to%20order%20the%20Kuromi%20Pink%20Sticky%20Notes%20(LKR%20550)." class="buy-btn" target="_blank">Order via WhatsApp</a>
             </div>
 
-            <!-- 8. Sanrio Sliding Drawer Boxes -->
-            <div class="product-card" data-name="sanrio sliding drawer eraser trinket boxes">
+            <!-- 5. Kuromi Purple Sticky Notes -->
+            <div class="product-card" data-name="kuromi purple sticky notes booklet">
                 <div>
-                    <div class="product-img">🗄️</div>
-                    <div class="product-title">Sanrio Sliding Drawer Trinket Box</div>
-                    <div class="product-desc">Miniature pull-out drawer boxes featuring Sanrio favorites</div>
-                    <div class="product-price">LKR 450</div>
-                </div>
-                <a href="https://wa.me/94772983432?text=Hi!%20I%20would%20like%20to%20order%20the%20Sanrio%20Sliding%20Drawer%20Box%20(LKR%20450)." class="buy-btn" target="_blank">Order via WhatsApp</a>
-            </div>
-
-            <!-- 9. Kuromi Multi-Section Sticky Note Booklet - Purple Edition -->
-            <div class="product-card" data-name="kuromi multi section sticky note booklet purple edition">
-                <div>
-                    <div class="product-img">💜</div>
+                    <div class="product-img">
+                        <img src="kuromi pink sn.jpeg" alt="Kuromi Purple Sticky Notes">
+                    </div>
                     <div class="product-title">Kuromi Multi-Sticky Booklet (Purple)</div>
                     <div class="product-desc">Gothic-cute purple palette with multiple tabs & strips</div>
                     <div class="product-price">LKR 550</div>
                 </div>
-                <a href="https://wa.me/94772983432?text=Hi!%20I%20would%20like%20to%20order%20the%20Kuromi%20Multi-Sticky%20Booklet%20-%20Purple%20(LKR%20550)." class="buy-btn" target="_blank">Order via WhatsApp</a>
+                <a href="https://wa.me/94772983432?text=Hi!%20I%20would%20like%20to%20order%20the%20Kuromi%20Purple%20Sticky%20Notes%20(LKR%20550)." class="buy-btn" target="_blank">Order via WhatsApp</a>
             </div>
 
-            <!-- 10. Kuromi Multi-Section Sticky Note Booklet - Pink Edition -->
-            <div class="product-card" data-name="kuromi multi section sticky note booklet pink edition">
+            <!-- 6. Correction Tape -->
+            <div class="product-card" data-name="correction tape">
                 <div>
-                    <div class="product-img">🎀</div>
-                    <div class="product-title">Kuromi Multi-Sticky Booklet (Pink)</div>
-                    <div class="product-desc">Coquette pink checkered theme with ribbons & treats</div>
-                    <div class="product-price">LKR 550</div>
+                    <div class="product-img">
+                        <img src="correction tape.jpeg" alt="Roller Correction Tape">
+                    </div>
+                    <div class="product-title">Roller Correction Tape</div>
+                    <div class="product-desc">Festive character-themed ergonomic grip correction tape</div>
+                    <div class="product-price">LKR 300</div>
                 </div>
-                <a href="https://wa.me/94772983432?text=Hi!%20I%20would%20like%20to%20order%20the%20Kuromi%20Multi-Sticky%20Booklet%20-%20Pink%20(LKR%20550)." class="buy-btn" target="_blank">Order via WhatsApp</a>
+                <a href="https://wa.me/94772983432?text=Hi!%20I%20would%20like%20to%20order%20the%20Roller%20Correction%20Tape%20(LKR%20300)." class="buy-btn" target="_blank">Order via WhatsApp</a>
+            </div>
+
+            <!-- 7. Capybara Ruler -->
+            <div class="product-card" data-name="capybara ruler bookmark set">
+                <div>
+                    <div class="product-img">
+                        <img src="capybara ruler.jpeg" alt="Capybara Ruler">
+                    </div>
+                    <div class="product-title">Capybara Ruler & Bookmark Set</div>
+                    <div class="product-desc">Translucent nature-themed ruler with 3D Capybara figure</div>
+                    <div class="product-price">LKR 350</div>
+                </div>
+                <a href="https://wa.me/94772983432?text=Hi!%20I%20would%20like%20to%20order%20the%20Capybara%20Ruler%20(LKR%20350)." class="buy-btn" target="_blank">Order via WhatsApp</a>
+            </div>
+
+            <!-- 8. Kuromi Scented Eraser -->
+            <div class="product-card" data-name="kuromi scented eraser">
+                <div>
+                    <div class="product-img">
+                        <img src="kuromi scented eraser.jpeg" alt="Kuromi Scented Eraser">
+                    </div>
+                    <div class="product-title">Kuromi Scented Eraser Set</div>
+                    <div class="product-desc">Cute block erasers featuring Kuromi and fun design accents</div>
+                    <div class="product-price">LKR 500</div>
+                </div>
+                <a href="https://wa.me/94772983432?text=Hi!%20I%20would%20like%20to%20order%20the%20Kuromi%20Scented%20Eraser%20(LKR%20500)." class="buy-btn" target="_blank">Order via WhatsApp</a>
             </div>
 
         </div>
