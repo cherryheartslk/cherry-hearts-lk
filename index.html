@@ -8,8 +8,6 @@
     <style>
         :root {
             --bg-color: #fdfbf7;
-            --primary-pink: #ffb7c5;
-            --accent-red: #ff6b8b;
             --text-color: #5a4a4b;
             --card-bg: #ffffff;
         }
@@ -25,7 +23,6 @@
 
         header {
             padding: 35px 20px;
-            /* Pastel Rainbow Gradient */
             background: linear-gradient(135deg, #ffd1dc, #ffecb6, #d0f4de, #c1f0f6, #e4c1f9);
             border-bottom: 2px dashed #ffb7c5;
             position: relative;
@@ -33,7 +30,7 @@
 
         h1 {
             font-size: 2.3rem;
-            color: var(--accent-red);
+            color: #ff6b8b;
             margin: 0;
             letter-spacing: 2px;
             text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
@@ -50,15 +47,15 @@
             position: absolute;
             top: 25px;
             right: 25px;
-            background: linear-gradient(135deg, #ff9aa2, #ffb7b2);
-            color: white;
+            background: #ffb7b2;
+            color: #5a4a4b;
             border: none;
             padding: 10px 18px;
             border-radius: 20px;
             font-family: 'Quicksand', sans-serif;
             font-weight: 700;
             cursor: pointer;
-            box-shadow: 0 4px 10px rgba(255, 154, 162, 0.3);
+            box-shadow: 0 4px 10px rgba(255, 183, 178, 0.3);
         }
 
         .search-container {
@@ -138,27 +135,38 @@
         }
 
         .product-price {
-            color: var(--accent-red);
+            color: #ff6b8b;
             font-weight: 700;
             font-size: 1.15rem;
             margin-bottom: 15px;
         }
 
+        /* Individual Pastel Button Styles */
+        .btn-pink { background-color: #ffb3ba; color: #5a4a4b; }
+        .btn-peach { background-color: #ffdfba; color: #5a4a4b; }
+        .btn-yellow { background-color: #ffffba; color: #5a4a4b; }
+        .btn-mint { background-color: #baffc9; color: #5a4a4b; }
+        .btn-blue { background-color: #bae1ff; color: #5a4a4b; }
+        .btn-lavender { background-color: #e4c1f9; color: #5a4a4b; }
+        .btn-rose { background-color: #ffc6ff; color: #5a4a4b; }
+        .btn-teal { background-color: #caffbf; color: #5a4a4b; }
+        .btn-periwinkle { background-color: #bdb2ff; color: #5a4a4b; }
+
         .action-btn {
-            background: linear-gradient(135deg, #ff9aa2, #ffb7b2);
-            color: white;
             border: none;
             padding: 10px 20px;
             border-radius: 20px;
             font-family: 'Quicksand', sans-serif;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
-            transition: opacity 0.2s;
+            transition: opacity 0.2s, transform 0.2s;
             width: 100%;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
 
         .action-btn:hover {
-            opacity: 0.9;
+            opacity: 0.85;
+            transform: translateY(-2px);
         }
 
         /* Cart Modal Drawer Overlay */
@@ -202,7 +210,7 @@
             border: none;
             font-size: 1.5rem;
             cursor: pointer;
-            color: var(--accent-red);
+            color: #ff6b8b;
         }
 
         .cart-items-list {
@@ -241,7 +249,7 @@
 
         .bank-box h4 {
             margin: 0 0 5px 0;
-            color: var(--accent-red);
+            color: #ff6b8b;
         }
 
         .whatsapp-upload-btn {
@@ -254,6 +262,7 @@
             font-weight: 700;
             display: none;
             margin-top: 10px;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.2);
         }
 
         footer {
@@ -291,7 +300,7 @@
                     <div class="product-desc">4 Variations (Red, Starry Purple, Strawberry, Lace)</div>
                     <div class="product-price" data-price="180">LKR 180</div>
                 </div>
-                <button class="action-btn" onclick="addToCart('Hello Kitty Sticky Note Pads', 180)">Add to Cart</button>
+                <button class="action-btn btn-pink" onclick="addToCart('Hello Kitty Sticky Note Pads', 180)">Add to Cart</button>
             </div>
 
             <!-- Correction Tape -->
@@ -302,7 +311,7 @@
                     <div class="product-desc">Festive character-themed ergonomic grip correction tape</div>
                     <div class="product-price" data-price="300">LKR 300</div>
                 </div>
-                <button class="action-btn" onclick="addToCart('Roller Correction Tape', 300)">Add to Cart</button>
+                <button class="action-btn btn-peach" onclick="addToCart('Roller Correction Tape', 300)">Add to Cart</button>
             </div>
 
             <!-- Capybara Ruler -->
@@ -313,7 +322,7 @@
                     <div class="product-desc">Translucent nature-themed ruler with 3D Capybara figure</div>
                     <div class="product-price" data-price="350">LKR 350</div>
                 </div>
-                <button class="action-btn" onclick="addToCart('Capybara Ruler & Bookmark Set', 350)">Add to Cart</button>
+                <button class="action-btn btn-yellow" onclick="addToCart('Capybara Ruler & Bookmark Set', 350)">Add to Cart</button>
             </div>
 
             <!-- Capybara Wall Stickers 1 -->
@@ -324,7 +333,7 @@
                     <div class="product-desc">Cute waterproof stickers to decorate journals and rooms</div>
                     <div class="product-price" data-price="250">LKR 250</div>
                 </div>
-                <button class="action-btn" onclick="addToCart('Capybara Decorative Wall Stickers', 250)">Add to Cart</button>
+                <button class="action-btn btn-mint" onclick="addToCart('Capybara Decorative Wall Stickers', 250)">Add to Cart</button>
             </div>
 
             <!-- Capybara Wall Stickers 2 -->
@@ -335,7 +344,7 @@
                     <div class="product-desc">Extra sheet of adorable cozy capybara designs</div>
                     <div class="product-price" data-price="250">LKR 250</div>
                 </div>
-                <button class="action-btn" onclick="addToCart('Capybara Sticker Pack Vol. 2', 250)">Add to Cart</button>
+                <button class="action-btn btn-blue" onclick="addToCart('Capybara Sticker Pack Vol. 2', 250)">Add to Cart</button>
             </div>
 
             <!-- Cinnamoroll Wall Stickers -->
@@ -346,7 +355,7 @@
                     <div class="product-desc">Sweet pastel cloud-themed stickers featuring Cinnamoroll</div>
                     <div class="product-price" data-price="250">LKR 250</div>
                 </div>
-                <button class="action-btn" onclick="addToCart('Cinnamoroll Wall & Journal Stickers', 250)">Add to Cart</button>
+                <button class="action-btn btn-lavender" onclick="addToCart('Cinnamoroll Wall & Journal Stickers', 250)">Add to Cart</button>
             </div>
 
             <!-- Araliya Clips -->
@@ -355,9 +364,9 @@
                     <div class="product-img"><img src="images/araliyaclips.jpeg" alt="Araliya Clips"></div>
                     <div class="product-title">Araliya Hair/Stationery Clips</div>
                     <div class="product-desc">Charming floral aesthetic clips for styling or organizing</div>
-                    <div class="product-price" data-price="250">LKR 250</div>
+                    <div class="product-price" data-price="100">LKR 100</div>
                 </div>
-                <button class="action-btn" onclick="addToCart('Araliya Hair/Stationery Clips', 250)">Add to Cart</button>
+                <button class="action-btn btn-rose" onclick="addToCart('Araliya Hair/Stationery Clips', 100)">Add to Cart</button>
             </div>
 
             <!-- Beaded Claws -->
@@ -366,9 +375,9 @@
                     <div class="product-img"><img src="images/beadedclaws.jpeg" alt="Beaded Claws"></div>
                     <div class="product-title">Beaded Claw Clips</div>
                     <div class="product-desc">Coquette and pearl-accented claw clips</div>
-                    <div class="product-price" data-price="350">LKR 350</div>
+                    <div class="product-price" data-price="200">LKR 200</div>
                 </div>
-                <button class="action-btn" onclick="addToCart('Beaded Claw Clips', 350)">Add to Cart</button>
+                <button class="action-btn btn-teal" onclick="addToCart('Beaded Claw Clips', 200)">Add to Cart</button>
             </div>
 
             <!-- Kuromi Notebook -->
@@ -377,9 +386,9 @@
                     <div class="product-img"><img src="images/kurominotebook.jpeg" alt="Kuromi Notebook"></div>
                     <div class="product-title">Kuromi Aesthetic Notebook</div>
                     <div class="product-desc">Edgy-cute spiral notebook for journaling and notes</div>
-                    <div class="product-price" data-price="450">LKR 450</div>
+                    <div class="product-price" data-price="300">LKR 300</div>
                 </div>
-                <button class="action-btn" onclick="addToCart('Kuromi Aesthetic Notebook', 450)">Add to Cart</button>
+                <button class="action-btn btn-periwinkle" onclick="addToCart('Kuromi Aesthetic Notebook', 300)">Add to Cart</button>
             </div>
 
         </div>
@@ -401,18 +410,18 @@
             <div>
                 <div style="font-weight: 700; font-size: 1.1rem; display: flex; justify-content: space-between; margin-bottom: 15px;">
                     <span>Total:</span>
-                    <span id="cartTotalPrice" style="color: var(--accent-red);">LKR 0</span>
+                    <span id="cartTotalPrice" style="color: #ff6b8b;">LKR 0</span>
                 </div>
 
-                <button class="action-btn" id="checkoutBtn" onclick="proceedToCheckout()" style="margin-bottom: 8px;">Proceed to Checkout</button>
+                <button class="action-btn btn-pink" id="checkoutBtn" onclick="proceedToCheckout()" style="margin-bottom: 8px;">Proceed to Checkout</button>
 
                 <!-- Bank Info Box -->
                 <div class="bank-box" id="bankBox">
                     <h4>💳 Bank Transfer Details</h4>
-                    <p><strong>Bank Name:</strong> Commercial Bank / BOC<br>
+                    <p><strong>Bank Name:</strong> peoples bank<br>
                     <strong>Account No:</strong> 1234567890<br>
-                    <strong>Account Name:</strong> Cherry Hearts LK</p>
-                    <button class="action-btn" onclick="finishPaying()" style="background: linear-gradient(135deg, #ffd1dc, #ffecb6); color: #5a4a4b; font-weight: 700; margin-top: 5px;">I'm Done Paying</button>
+                    <strong>Account Name:</strong> s d w rajapaksha</p>
+                    <button class="action-btn btn-mint" onclick="finishPaying()" style="margin-top: 5px;">I'm Done Paying</button>
                 </div>
 
                 <!-- WhatsApp Upload Slip Button -->
