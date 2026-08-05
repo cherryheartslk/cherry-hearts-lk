@@ -24,74 +24,56 @@
         }
 
         header {
-            padding: 40px 20px;
+            padding: 30px 20px;
             background: linear-gradient(135deg, #ffe5ec, #ffc2d1);
             border-bottom: 2px dashed var(--primary-pink);
+            position: relative;
         }
 
         h1 {
-            font-size: 2.5rem;
+            font-size: 2.3rem;
             color: var(--accent-red);
             margin: 0;
             letter-spacing: 2px;
         }
 
         p.tagline {
-            font-size: 1.1rem;
-            margin-top: 10px;
+            font-size: 1.05rem;
+            margin-top: 8px;
             font-weight: 600;
         }
 
-        .payment-info-box {
-            max-width: 600px;
-            margin: 20px auto 0 auto;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 15px 20px;
-            border-radius: 15px;
-            border: 1px solid var(--primary-pink);
-            font-size: 0.9rem;
-            text-align: left;
-            box-shadow: 0 4px 10px rgba(255, 183, 197, 0.1);
-        }
-
-        .payment-info-box h3 {
-            color: var(--accent-red);
-            margin: 0 0 8px 0;
-            font-size: 1rem;
-            text-align: center;
-        }
-
-        .payment-info-box ul {
-            margin: 0;
-            padding-left: 20px;
-        }
-
-        .payment-info-box li {
-            margin-bottom: 5px;
+        .cart-btn-header {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background: var(--accent-red);
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 20px;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(255, 77, 109, 0.2);
         }
 
         .search-container {
-            margin-top: 25px;
+            margin-top: 20px;
         }
 
         .search-input {
             width: 100%;
             max-width: 400px;
-            padding: 12px 20px;
+            padding: 10px 18px;
             border: 2px solid var(--primary-pink);
             border-radius: 30px;
             font-family: 'Quicksand', sans-serif;
-            font-size: 1rem;
+            font-size: 0.95rem;
             outline: none;
             background-color: #ffffff;
             color: var(--text-color);
             box-shadow: 0 4px 10px rgba(255, 183, 197, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .search-input:focus {
-            border-color: var(--accent-red);
-            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.15);
         }
 
         .container {
@@ -113,14 +95,9 @@
             border-radius: 20px;
             padding: 20px;
             box-shadow: 0 8px 20px rgba(255, 183, 197, 0.15);
-            transition: transform 0.3s ease;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
         }
 
         .product-img {
@@ -128,9 +105,6 @@
             height: 180px;
             background-color: #fff0f3;
             border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             margin-bottom: 15px;
             overflow: hidden;
         }
@@ -161,7 +135,7 @@
             margin-bottom: 15px;
         }
 
-        .buy-btn {
+        .action-btn {
             background-color: var(--accent-red);
             color: white;
             border: none;
@@ -171,12 +145,106 @@
             font-weight: 600;
             cursor: pointer;
             transition: background 0.2s;
-            text-decoration: none;
-            display: inline-block;
+            width: 100%;
         }
 
-        .buy-btn:hover {
+        .action-btn:hover {
             background-color: #e63956;
+        }
+
+        /* Cart Modal Drawer Overlay */
+        .cart-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(90, 74, 75, 0.4);
+            justify-content: flex-end;
+            z-index: 1000;
+        }
+
+        .cart-content {
+            background: #ffffff;
+            width: 100%;
+            max-width: 400px;
+            height: 100%;
+            padding: 25px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: left;
+            overflow-y: auto;
+            box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #ffe5ec;
+            padding-bottom: 15px;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--accent-red);
+        }
+
+        .cart-items-list {
+            flex-grow: 1;
+            margin: 15px 0;
+            overflow-y: auto;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+            border-bottom: 1px dashed #ffe5ec;
+            padding-bottom: 8px;
+        }
+
+        .remove-item {
+            color: #ff4d6d;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .bank-box {
+            background: #fffafb;
+            border: 1px solid var(--primary-pink);
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .bank-box h4 {
+            margin: 0 0 5px 0;
+            color: var(--accent-red);
+        }
+
+        .whatsapp-upload-btn {
+            background-color: #25d366;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            padding: 12px;
+            border-radius: 20px;
+            font-weight: 700;
+            display: none;
+            margin-top: 10px;
         }
 
         footer {
@@ -191,18 +259,10 @@
 <body>
 
     <header>
+        <button class="cart-btn-header" onclick="toggleCart()">🛒 Cart (<span id="cartCount">0</span>)</button>
         <h1>🍒 Cherry Hearts LK 🎀</h1>
         <p class="tagline">Sweet, coquette & kawaii stationery designed to make your days dreamy.</p>
         
-        <div class="payment-info-box">
-            <h3>💳 Accepted Payment Methods</h3>
-            <ul>
-                <li><strong>Bank Transfer:</strong> Bank Name: [Your Bank], Acc No: [Your Acc Number], Name: [Your Name]</li>
-                <li><strong>Card Payments:</strong> Accepted via WhatsApp checkout coordination.</li>
-                <li><em>After transferring or paying, please send your receipt/slip via WhatsApp along with your order!</em></li>
-            </ul>
-        </div>
-
         <div class="search-container">
             <input type="text" id="searchInput" class="search-input" placeholder="🔍 Search cute stationery..." onkeyup="searchProducts()">
         </div>
@@ -216,120 +276,138 @@
             <!-- Hello Kitty Sticky Notes -->
             <div class="product-card" data-name="hello kitty sticky note pads">
                 <div>
-                    <div class="product-img">
-                        <img src="images/hellokittystickynotes.jpeg" alt="Hello Kitty Sticky Note Pads">
-                    </div>
+                    <div class="product-img"><img src="images/hellokittystickynotes.jpeg" alt="Hello Kitty Sticky Note Pads"></div>
                     <div class="product-title">Hello Kitty Sticky Note Pads</div>
                     <div class="product-desc">4 Variations (Red, Starry Purple, Strawberry, Lace)</div>
-                    <div class="product-price">LKR 180</div>
+                    <div class="product-price" data-price="180">LKR 180</div>
                 </div>
-                <a href="https://wa.me/94772983432?text=Hi!%20I%20would%20like%20to%20order%20the%20Hello%20Kitty%20Sticky%20Note%20Pads%20(LKR%20180)." class="buy-btn" target="_blank">Order via WhatsApp</a>
+                <button class="action-btn" onclick="addToCart('Hello Kitty Sticky Note Pads', 180)">Add to Cart</button>
             </div>
 
             <!-- Correction Tape -->
             <div class="product-card" data-name="correction tape">
                 <div>
-                    <div class="product-img">
-                        <img src="images/correctiontape.jpeg" alt="Roller Correction Tape">
-                    </div>
+                    <div class="product-img"><img src="images/correctiontape.jpeg" alt="Roller Correction Tape"></div>
                     <div class="product-title">Roller Correction Tape</div>
                     <div class="product-desc">Festive character-themed ergonomic grip correction tape</div>
-                    <div class="product-price">LKR 300</div>
+                    <div class="product-price" data-price="300">LKR 300</div>
                 </div>
-                <a href="https://wa.me/94772983432?text=Hi!%20I%20would%20like%20to%20order%20the%20Roller%20Correction%20Tape%20(LKR%20300)." class="buy-btn" target="_blank">Order via WhatsApp</a>
+                <button class="action-btn" onclick="addToCart('Roller Correction Tape', 300)">Add to Cart</button>
             </div>
 
             <!-- Capybara Ruler -->
             <div class="product-card" data-name="capybara ruler bookmark set">
                 <div>
-                    <div class="product-img">
-                        <img src="images/capybararuler.jpeg" alt="Capybara Ruler">
-                    </div>
+                    <div class="product-img"><img src="images/capybararuler.jpeg" alt="Capybara Ruler"></div>
                     <div class="product-title">Capybara Ruler & Bookmark Set</div>
                     <div class="product-desc">Translucent nature-themed ruler with 3D Capybara figure</div>
-                    <div class="product-price">LKR 350</div>
+                    <div class="product-price" data-price="350">LKR 350</div>
                 </div>
-                <a href="https://wa.me/94772983432?text=Hi!%20I%20would%20like%20to%20order%20the%20Capybara%20Ruler%20(LKR%20350)." class="buy-btn" target="_blank">Order via WhatsApp</a>
+                <button class="action-btn" onclick="addToCart('Capybara Ruler & Bookmark Set', 350)">Add to Cart</button>
             </div>
 
             <!-- Capybara Wall Stickers 1 -->
             <div class="product-card" data-name="capybara wall stickers">
                 <div>
-                    <div class="product-img">
-                        <img src="images/capybarawallsticker1.jpeg" alt="Capybara Wall Stickers">
-                    </div>
+                    <div class="product-img"><img src="images/capybarawallsticker1.jpeg" alt="Capybara Wall Stickers"></div>
                     <div class="product-title">Capybara Decorative Wall Stickers</div>
                     <div class="product-desc">Cute waterproof stickers to decorate journals and rooms</div>
-                    <div class="product-price">LKR 250</div>
+                    <div class="product-price" data-price="250">LKR 250</div>
                 </div>
-                <a href="https://wa.me/94772983432?text=Hi!%20I%20would%20like%20to%20order%20the%20Capybara%20Wall%20Stickers%20(LKR%20250)." class="buy-btn" target="_blank">Order via WhatsApp</a>
+                <button class="action-btn" onclick="addToCart('Capybara Decorative Wall Stickers', 250)">Add to Cart</button>
             </div>
 
             <!-- Capybara Wall Stickers 2 -->
             <div class="product-card" data-name="capybara wall stickers pack">
                 <div>
-                    <div class="product-img">
-                        <img src="images/capybarawallsticker2.jpeg" alt="Capybara Wall Stickers Pack">
-                    </div>
+                    <div class="product-img"><img src="images/capybarawallsticker2.jpeg" alt="Capybara Wall Stickers Pack"></div>
                     <div class="product-title">Capybara Sticker Pack Vol. 2</div>
                     <div class="product-desc">Extra sheet of adorable cozy capybara designs</div>
-                    <div class="product-price">LKR 250</div>
+                    <div class="product-price" data-price="250">LKR 250</div>
                 </div>
-                <a href="https://wa.me/94772983432?text=Hi!%20I%20would%20like%20to%20order%20the%20Capybara%20Sticker%20Pack%20Vol.%202%20(LKR%20250)." class="buy-btn" target="_blank">Order via WhatsApp</a>
+                <button class="action-btn" onclick="addToCart('Capybara Sticker Pack Vol. 2', 250)">Add to Cart</button>
             </div>
 
             <!-- Cinnamoroll Wall Stickers -->
             <div class="product-card" data-name="cinnamoroll wall stickers">
                 <div>
-                    <div class="product-img">
-                        <img src="images/cinnomorollwallsticker.jpeg" alt="Cinnamoroll Wall Stickers">
-                    </div>
+                    <div class="product-img"><img src="images/cinnomorollwallsticker.jpeg" alt="Cinnamoroll Wall Stickers"></div>
                     <div class="product-title">Cinnamoroll Wall & Journal Stickers</div>
                     <div class="product-desc">Sweet pastel cloud-themed stickers featuring Cinnamoroll</div>
-                    <div class="product-price">LKR 250</div>
+                    <div class="product-price" data-price="250">LKR 250</div>
                 </div>
-                <a href="https://wa.me/94772983432?text=Hi!%20I%20would%20like%20to%20order%20the%20Cinnamoroll%20Stickers%20(LKR%20250)." class="buy-btn" target="_blank">Order via WhatsApp</a>
+                <button class="action-btn" onclick="addToCart('Cinnamoroll Wall & Journal Stickers', 250)">Add to Cart</button>
             </div>
 
             <!-- Araliya Clips -->
             <div class="product-card" data-name="araliya clips">
                 <div>
-                    <div class="product-img">
-                        <img src="images/araliyaclips.jpeg" alt="Araliya Clips">
-                    </div>
+                    <div class="product-img"><img src="images/araliyaclips.jpeg" alt="Araliya Clips"></div>
                     <div class="product-title">Araliya Hair/Stationery Clips</div>
                     <div class="product-desc">Charming floral aesthetic clips for styling or organizing</div>
-                    <div class="product-price">LKR 250</div>
+                    <div class="product-price" data-price="250">LKR 250</div>
                 </div>
-                <a href="https://wa.me/94772983432?text=Hi!%20I%20would%20like%20to%20order%20the%20Araliya%20Clips%20(LKR%20250)." class="buy-btn" target="_blank">Order via WhatsApp</a>
+                <button class="action-btn" onclick="addToCart('Araliya Hair/Stationery Clips', 250)">Add to Cart</button>
             </div>
 
             <!-- Beaded Claws -->
             <div class="product-card" data-name="beaded claws">
                 <div>
-                    <div class="product-img">
-                        <img src="images/beadedclaws.jpeg" alt="Beaded Claws">
-                    </div>
+                    <div class="product-img"><img src="images/beadedclaws.jpeg" alt="Beaded Claws"></div>
                     <div class="product-title">Beaded Claw Clips</div>
                     <div class="product-desc">Coquette and pearl-accented claw clips</div>
-                    <div class="product-price">LKR 350</div>
+                    <div class="product-price" data-price="350">LKR 350</div>
                 </div>
-                <a href="https://wa.me/94772983432?text=Hi!%20I%20would%20like%20to%20order%20the%20Beaded%20Claws%20(LKR%20350)." class="buy-btn" target="_blank">Order via WhatsApp</a>
+                <button class="action-btn" onclick="addToCart('Beaded Claw Clips', 350)">Add to Cart</button>
             </div>
 
             <!-- Kuromi Notebook -->
             <div class="product-card" data-name="kuromi notebook">
                 <div>
-                    <div class="product-img">
-                        <img src="images/kurominotebook.jpeg" alt="Kuromi Notebook">
-                    </div>
+                    <div class="product-img"><img src="images/kurominotebook.jpeg" alt="Kuromi Notebook"></div>
                     <div class="product-title">Kuromi Aesthetic Notebook</div>
                     <div class="product-desc">Edgy-cute spiral notebook for journaling and notes</div>
-                    <div class="product-price">LKR 450</div>
+                    <div class="product-price" data-price="450">LKR 450</div>
                 </div>
-                <a href="https://wa.me/94772983432?text=Hi!%20I%20would%20like%20to%20order%20the%20Kuromi%20Notebook%20(LKR%20450)." class="buy-btn" target="_blank">Order via WhatsApp</a>
+                <button class="action-btn" onclick="addToCart('Kuromi Aesthetic Notebook', 450)">Add to Cart</button>
             </div>
 
+        </div>
+    </div>
+
+    <!-- Cart Drawer Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <div>
+                <div class="cart-header">
+                    <h3>🛍️ Your Shopping Cart</h3>
+                    <button class="close-cart" onclick="toggleCart()">&times;</button>
+                </div>
+                <div class="cart-items-list" id="cartItemsList">
+                    <p style="color: #8c787a; text-align: center; margin-top: 30px;">Your cart is empty!</p>
+                </div>
+            </div>
+            
+            <div>
+                <div style="font-weight: 700; font-size: 1.1rem; display: flex; justify-content: space-between; margin-bottom: 15px;">
+                    <span>Total:</span>
+                    <span id="cartTotalPrice" style="color: var(--accent-red);">LKR 0</span>
+                </div>
+
+                <button class="action-btn" id="checkoutBtn" onclick="proceedToCheckout()" style="margin-bottom: 8px;">Proceed to Checkout</button>
+
+                <!-- Bank Info Box -->
+                <div class="bank-box" id="bankBox">
+                    <h4>💳 Bank Transfer Details</h4>
+                    <p><strong>Bank Name:</strong> Commercial Bank / BOC<br>
+                    <strong>Account No:</strong> 1234567890<br>
+                    <strong>Account Name:</strong> Cherry Hearts LK</p>
+                    <button class="action-btn" onclick="finishPaying()" style="background: #ffb7c5; color: #5a4a4b; font-weight: 700; margin-top: 5px;">I'm Done Paying</button>
+                </div>
+
+                <!-- WhatsApp Upload Slip Button -->
+                <a href="#" id="whatsappUploadBtn" class="whatsapp-upload-btn" target="_blank">📤 Upload Slip & Order via WhatsApp</a>
+            </div>
         </div>
     </div>
 
@@ -338,6 +416,73 @@
     </footer>
 
     <script>
+        let cart = [];
+
+        function toggleCart() {
+            let modal = document.getElementById('cartModal');
+            modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            updateCartUI();
+            alert(name + " added to cart! 🎀");
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            let list = document.getElementById('cartItemsList');
+            let countSpan = document.getElementById('cartCount');
+            let totalPriceSpan = document.getElementById('cartTotalPrice');
+
+            countSpan.innerText = cart.length;
+
+            if (cart.length === 0) {
+                list.innerHTML = '<p style="color: #8c787a; text-align: center; margin-top: 30px;">Your cart is empty!</p>';
+                totalPriceSpan.innerText = 'LKR 0';
+                document.getElementById('bankBox').style.display = 'none';
+                document.getElementById('whatsappUploadBtn').style.display = 'none';
+                document.getElementById('checkoutBtn').style.display = 'block';
+                return;
+            }
+
+            let html = '';
+            let total = 0;
+            cart.forEach((item, index) => {
+                total += item.price;
+                html += `<div class="cart-item">
+                    <span>${item.name} - LKR ${item.price}</span>
+                    <button class="remove-item" onclick="removeFromCart(${index})">✕</button>
+                </div>`;
+            });
+
+            list.innerHTML = html;
+            totalPriceSpan.innerText = 'LKR ' + total;
+        }
+
+        function proceedToCheckout() {
+            if (cart.length === 0) return;
+            document.getElementById('bankBox').style.display = 'block';
+            document.getElementById('checkoutBtn').style.display = 'none';
+        }
+
+        function finishPaying() {
+            let total = cart.reduce((sum, item) => sum + item.price, 0);
+            let productDetails = cart.map(item => `• ${item.name} (LKR ${item.price})`).join('%0A');
+            
+            let message = `Hi! I have completed the payment for my order.%0A%0A*Products:*%0A${productDetails}%0A%0A*Total Amount:* LKR ${total}%0A%0AHere is my payment slip! 👇`;
+            
+            let whatsappUrl = `https://wa.me/94772983432?text=${message}`;
+            
+            let waBtn = document.getElementById('whatsappUploadBtn');
+            waBtn.href = whatsappUrl;
+            waBtn.style.display = 'block';
+        }
+
         function searchProducts() {
             let input = document.getElementById('searchInput').value.toLowerCase();
             let cards = document.getElementsByClassName('product-card');
@@ -352,6 +497,5 @@
             }
         }
     </script>
-
 </body>
 </html>
