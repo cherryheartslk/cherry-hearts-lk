@@ -237,6 +237,26 @@
             font-weight: bold;
         }
 
+        .summary-box {
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            border-top: 2px solid #ffd1dc;
+            padding-top: 10px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .summary-total {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #ff6b8b;
+            margin-top: 5px;
+        }
+
         .bank-box {
             background: #fdfbf7;
             border: 1px solid #ffb7c5;
@@ -364,9 +384,9 @@
                     <div class="product-img"><img src="images/araliyaclips.jpeg" alt="Araliya Clips"></div>
                     <div class="product-title">Araliya Hair/Stationery Clips</div>
                     <div class="product-desc">Charming floral aesthetic clips for styling or organizing</div>
-                    <div class="product-price" data-price="100">LKR 100</div>
+                    <div class="product-price" data-price="250">LKR 250</div>
                 </div>
-                <button class="action-btn btn-rose" onclick="addToCart('Araliya Hair/Stationery Clips', 100)">Add to Cart</button>
+                <button class="action-btn btn-rose" onclick="addToCart('Araliya Hair/Stationery Clips', 250)">Add to Cart</button>
             </div>
 
             <!-- Beaded Claws -->
@@ -375,9 +395,9 @@
                     <div class="product-img"><img src="images/beadedclaws.jpeg" alt="Beaded Claws"></div>
                     <div class="product-title">Beaded Claw Clips</div>
                     <div class="product-desc">Coquette and pearl-accented claw clips</div>
-                    <div class="product-price" data-price="200">LKR 200</div>
+                    <div class="product-price" data-price="350">LKR 350</div>
                 </div>
-                <button class="action-btn btn-teal" onclick="addToCart('Beaded Claw Clips', 200)">Add to Cart</button>
+                <button class="action-btn btn-teal" onclick="addToCart('Beaded Claw Clips', 350)">Add to Cart</button>
             </div>
 
             <!-- Kuromi Notebook -->
@@ -386,9 +406,9 @@
                     <div class="product-img"><img src="images/kurominotebook.jpeg" alt="Kuromi Notebook"></div>
                     <div class="product-title">Kuromi Aesthetic Notebook</div>
                     <div class="product-desc">Edgy-cute spiral notebook for journaling and notes</div>
-                    <div class="product-price" data-price="300">LKR 300</div>
+                    <div class="product-price" data-price="450">LKR 450</div>
                 </div>
-                <button class="action-btn btn-periwinkle" onclick="addToCart('Kuromi Aesthetic Notebook', 300)">Add to Cart</button>
+                <button class="action-btn btn-periwinkle" onclick="addToCart('Kuromi Aesthetic Notebook', 450)">Add to Cart</button>
             </div>
 
         </div>
@@ -408,9 +428,19 @@
             </div>
             
             <div>
-                <div style="font-weight: 700; font-size: 1.1rem; display: flex; justify-content: space-between; margin-bottom: 15px;">
-                    <span>Total:</span>
-                    <span id="cartTotalPrice" style="color: #ff6b8b;">LKR 0</span>
+                <div class="summary-box" id="summaryBox" style="display: none;">
+                    <div class="summary-row">
+                        <span>Subtotal:</span>
+                        <span id="cartSubtotal">LKR 0</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Shipping Fee:</span>
+                        <span>LKR 300</span>
+                    </div>
+                    <div class="summary-row summary-total">
+                        <span>Total:</span>
+                        <span id="cartTotalPrice">LKR 300</span>
+                    </div>
                 </div>
 
                 <button class="action-btn btn-pink" id="checkoutBtn" onclick="proceedToCheckout()" style="margin-bottom: 8px;">Proceed to Checkout</button>
@@ -419,7 +449,7 @@
                 <div class="bank-box" id="bankBox">
                     <h4>💳 Bank Transfer Details</h4>
                     <p><strong>Bank Name:</strong> peoples bank<br>
-                    <strong>Account No:</strong> 1234567890<br>
+                    <strong>Account No:</strong> 148-200-140-019-997<br>
                     <strong>Account Name:</strong> s d w rajapaksha</p>
                     <button class="action-btn btn-mint" onclick="finishPaying()" style="margin-top: 5px;">I'm Done Paying</button>
                 </div>
@@ -436,6 +466,7 @@
 
     <script>
         let cart = [];
+        const shippingFee = 300;
 
         function toggleCart() {
             let modal = document.getElementById('cartModal');
@@ -456,13 +487,15 @@
         function updateCartUI() {
             let list = document.getElementById('cartItemsList');
             let countSpan = document.getElementById('cartCount');
+            let subtotalSpan = document.getElementById('cartSubtotal');
             let totalPriceSpan = document.getElementById('cartTotalPrice');
+            let summaryBox = document.getElementById('summaryBox');
 
             countSpan.innerText = cart.length;
 
             if (cart.length === 0) {
                 list.innerHTML = '<p style="color: #8c787a; text-align: center; margin-top: 30px;">Your cart is empty!</p>';
-                totalPriceSpan.innerText = 'LKR 0';
+                summaryBox.style.display = 'none';
                 document.getElementById('bankBox').style.display = 'none';
                 document.getElementById('whatsappUploadBtn').style.display = 'none';
                 document.getElementById('checkoutBtn').style.display = 'block';
@@ -470,9 +503,9 @@
             }
 
             let html = '';
-            let total = 0;
+            let subtotal = 0;
             cart.forEach((item, index) => {
-                total += item.price;
+                subtotal += item.price;
                 html += `<div class="cart-item">
                     <span>${item.name} - LKR ${item.price}</span>
                     <button class="remove-item" onclick="removeFromCart(${index})">✕</button>
@@ -480,7 +513,9 @@
             });
 
             list.innerHTML = html;
-            totalPriceSpan.innerText = 'LKR ' + total;
+            subtotalSpan.innerText = 'LKR ' + subtotal;
+            totalPriceSpan.innerText = 'LKR ' + (subtotal + shippingFee);
+            summaryBox.style.display = 'block';
         }
 
         function proceedToCheckout() {
@@ -490,10 +525,11 @@
         }
 
         function finishPaying() {
-            let total = cart.reduce((sum, item) => sum + item.price, 0);
+            let subtotal = cart.reduce((sum, item) => sum + item.price, 0);
+            let finalTotal = subtotal + shippingFee;
             let productDetails = cart.map(item => `• ${item.name} (LKR ${item.price})`).join('%0A');
             
-            let message = `Hi! I have completed the payment for my order.%0A%0A*Products:*%0A${productDetails}%0A%0A*Total Amount:* LKR ${total}%0A%0AHere is my payment slip! 👇`;
+            let message = `Hi! I have completed the payment for my order.%0A%0A*Products:*%0A${productDetails}%0A%0ASubtotal: LKR ${subtotal}%0AShipping Fee: LKR ${shippingFee}%0A*Total Amount:* LKR ${finalTotal}%0A%0AHere is my payment slip! 👇`;
             
             let whatsappUrl = `https://wa.me/94772983432?text=${message}`;
             
