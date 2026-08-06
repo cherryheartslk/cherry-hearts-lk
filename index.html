@@ -97,6 +97,8 @@
             flex-direction: column;
             justify-content: space-between;
             transition: transform 0.3s ease;
+            cursor: pointer;
+            text-align: left;
         }
 
         .product-card:hover {
@@ -104,7 +106,7 @@
             border-color: #ffb7c5;
         }
 
-        /* Pastel Rainbow Card Background Variations (Differing from buttons) */
+        /* Pastel Rainbow Card Background Variations */
         .card-pink { background-color: #fff0f5; }
         .card-peach { background-color: #fff5ee; }
         .card-yellow { background-color: #fefee0; }
@@ -136,6 +138,7 @@
             font-weight: 700;
             font-size: 1.1rem;
             margin-bottom: 5px;
+            color: #5a4a4b;
         }
 
         .product-desc {
@@ -172,6 +175,7 @@
             transition: opacity 0.2s, transform 0.2s;
             width: 100%;
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            text-align: center;
         }
 
         .action-btn:hover {
@@ -179,8 +183,8 @@
             transform: translateY(-2px);
         }
 
-        /* Cart Modal Drawer Overlay */
-        .cart-modal {
+        /* Product Details Modal Overlay */
+        .product-modal, .cart-modal {
             display: none;
             position: fixed;
             top: 0;
@@ -188,10 +192,81 @@
             width: 100%;
             height: 100%;
             background: rgba(90, 74, 75, 0.4);
-            justify-content: flex-end;
+            justify-content: center;
+            align-items: center;
             z-index: 1000;
         }
 
+        .cart-modal {
+            justify-content: flex-end;
+        }
+
+        .modal-card {
+            background: #ffffff;
+            width: 90%;
+            max-width: 500px;
+            padding: 30px;
+            border-radius: 25px;
+            box-sizing: border-box;
+            text-align: left;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border: 2px solid #ffd1dc;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #ff6b8b;
+        }
+
+        .modal-img-container {
+            width: 100%;
+            height: 250px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .modal-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .variation-select-group {
+            margin: 15px 0;
+        }
+
+        .variation-select-group label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            color: #5a4a4b;
+        }
+
+        .variation-select {
+            width: 100%;
+            padding: 10px 15px;
+            border: 2px solid #ffd1dc;
+            border-radius: 15px;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 0.95rem;
+            outline: none;
+            background-color: #fff;
+            color: #5a4a4b;
+        }
+
+        /* Cart Content Drawer */
         .cart-content {
             background: #ffffff;
             width: 100%;
@@ -213,14 +288,6 @@
             align-items: center;
             border-bottom: 2px solid #ffd1dc;
             padding-bottom: 15px;
-        }
-
-        .close-cart {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: #ff6b8b;
         }
 
         .cart-items-list {
@@ -319,339 +386,13 @@
 
     <div class="container">
         <h2>✨ Featured Collections ✨</h2>
-        
-        <div class="products-grid" id="productsGrid">
-            
-            <!-- Hello Kitty Sticky Notes -->
-            <div class="product-card card-pink" data-name="hello kitty sticky note pads">
-                <div>
-                    <div class="product-img"><img src="images/hellokittystickynotes.jpeg" alt="Hello Kitty Sticky Note Pads"></div>
-                    <div class="product-title">Hello Kitty Sticky Note Pads</div>
-                    <div class="product-desc">4 Variations (Red, Starry Purple, Strawberry, Lace)</div>
-                    <div class="product-price" data-price="180">LKR 180</div>
-                </div>
-                <button class="action-btn btn-pink" onclick="addToCart('Hello Kitty Sticky Note Pads', 180)">Add to Cart</button>
-            </div>
+        <div class="products-grid" id="productsGrid"></div>
+    </div>
 
-            <!-- Correction Tape -->
-            <div class="product-card card-peach" data-name="correction tape">
-                <div>
-                    <div class="product-img"><img src="images/correctiontape.jpeg" alt="Roller Correction Tape"></div>
-                    <div class="product-title">Roller Correction Tape</div>
-                    <div class="product-desc">Festive character-themed ergonomic grip correction tape</div>
-                    <div class="product-price" data-price="180">LKR 180</div>
-                </div>
-                <button class="action-btn btn-peach" onclick="addToCart('Roller Correction Tape', 180)">Add to Cart</button>
-            </div>
-
-            <!-- Capybara Ruler -->
-            <div class="product-card card-yellow" data-name="capybara ruler">
-                <div>
-                    <div class="product-img"><img src="images/capybararuler.jpeg" alt="Capybara Ruler & Bookmark Set"></div>
-                    <div class="product-title">Capybara Ruler & Bookmark Set</div>
-                    <div class="product-desc">Translucent nature-themed ruler with 3D Capybara figure</div>
-                    <div class="product-price" data-price="150">LKR 150</div>
-                </div>
-                <button class="action-btn btn-yellow" onclick="addToCart('Capybara Ruler & Bookmark Set', 150)">Add to Cart</button>
-            </div>
-
-            <!-- Capybara Wall -->
-            <div class="product-card card-mint" data-name="capybara wall stickers">
-                <div>
-                    <div class="product-img"><img src="images/capybarawallsticker1.jpeg" alt="Capybara Decorative Wall Stickers design 1"></div>
-                    <div class="product-title">Capybara Decorative Wall Stickers design 1</div>
-                    <div class="product-desc">Cute waterproof stickers to decorate rooms</div>
-                    <div class="product-price" data-price="150">LKR 150</div>
-                </div>
-                <button class="action-btn btn-mint" onclick="addToCart('Capybara Decorative Wall Stickers design 1', 150)">Add to Cart</button>
-            </div>
-
-            <!-- Capybara Wall Stickers 2 -->
-            <div class="product-card card-blue" data-name="capybara wall stickers pack">
-                <div>
-                    <div class="product-img"><img src="images/capybarawallsticker2.jpeg" alt="Capybara Sticker Pack design 2"></div>
-                    <div class="product-title">Capybara Sticker Pack design 2</div>
-                    <div class="product-desc">cozy capybara designs</div>
-                    <div class="product-price" data-price="150">LKR 150</div>
-                </div>
-                <button class="action-btn btn-blue" onclick="addToCart('Capybara Sticker Pack design 2', 150)">Add to Cart</button>
-            </div>
-
-            <!-- Cinnamoroll Wall Stickers -->
-            <div class="product-card card-lavender" data-name="cinnamoroll wall stickers">
-                <div>
-                    <div class="product-img"><img src="images/cinnomorollwallsticker.jpeg" alt="Cinnamoroll Wall Stickers"></div>
-                    <div class="product-title">Cinnamoroll Wall Stickers</div>
-                    <div class="product-desc">Sweet pastel cloud-themed stickers featuring Cinnamoroll</div>
-                    <div class="product-price" data-price="150">LKR 150</div>
-                </div>
-                <button class="action-btn btn-lavender" onclick="addToCart('Cinnamoroll Wall Stickers', 150)">Add to Cart</button>
-            </div>
-
-            <!-- Araliya Clips -->
-            <div class="product-card card-rose" data-name="araliya clips">
-                <div>
-                    <div class="product-img"><img src="images/araliyaclips.jpeg" alt="Araliya Hair/Stationery Clips"></div>
-                    <div class="product-title">Araliya Hair/Stationery Clips</div>
-                    <div class="product-desc">Charming floral aesthetic clips for styling or organizing</div>
-                    <div class="product-price" data-price="100">LKR 100</div>
-                </div>
-                <button class="action-btn btn-rose" onclick="addToCart('Araliya Hair/Stationery Clips', 100)">Add to Cart</button>
-            </div>
-
-            <!-- Beaded Claws -->
-            <div class="product-card card-teal" data-name="beaded claws">
-                <div>
-                    <div class="product-img"><img src="images/beadedclaws.jpeg" alt="Beaded Claw Clips"></div>
-                    <div class="product-title">Beaded Claw Clips</div>
-                    <div class="product-desc">Coquette and pearl-accented claw clips</div>
-                    <div class="product-price" data-price="200">LKR 200</div>
-                </div>
-                <button class="action-btn btn-teal" onclick="addToCart('Beaded Claw Clips', 200)">Add to Cart</button>
-            </div>
-
-            <!-- Kuromi Notebook -->
-            <div class="product-card card-periwinkle" data-name="kuromi notebook">
-                <div>
-                    <div class="product-img"><img src="images/kurominotebook.jpeg" alt="Kuromi Aesthetic Notebook"></div>
-                    <div class="product-title">Kuromi Aesthetic Notebook</div>
-                    <div class="product-desc">Edgy-cute spiral notebook for journaling and notes</div>
-                    <div class="product-price" data-price="300">LKR 300</div>
-                </div>
-                <button class="action-btn btn-periwinkle" onclick="addToCart('Kuromi Aesthetic Notebook', 300)">Add to Cart</button>
-            </div>
-
-            <!-- Kuromi purple Sticky Note -->
-            <div class="product-card card-pink" data-name="kuromi purple sticky note">
-                <div>
-                    <div class="product-img"><img src="images/kuromipinkstickynote.jpeg" alt="Kuromi purple Sticky Note"></div>
-                    <div class="product-title">Kuromi purple Sticky Note</div>
-                    <div class="product-desc">Adorable purple themed Kuromi sticky note pad</div>
-                    <div class="product-price" data-price="200">LKR 200</div>
-                </div>
-                <button class="action-btn btn-pink" onclick="addToCart('Kuromi purple Sticky Note', 200)">Add to Cart</button>
-            </div>
-
-            <!-- Kuromi pink Sticky Note -->
-            <div class="product-card card-peach" data-name="kuromi pink sticky note">
-                <div>
-                    <div class="product-img"><img src="images/kuromipurplestickynote.jpeg" alt="Kuromi pink Sticky Note"></div>
-                    <div class="product-title">Kuromi pink Sticky Note</div>
-                    <div class="product-desc">Signature pink aesthetic Kuromi sticky notes</div>
-                    <div class="product-price" data-price="200">LKR 200</div>
-                </div>
-                <button class="action-btn btn-peach" onclick="addToCart('Kuromi pink Sticky Note', 200)">Add to Cart</button>
-            </div>
-
-            <!-- Kuromi Scented Eraser -->
-            <div class="product-card card-yellow" data-name="kuromi scented eraser">
-                <div>
-                    <div class="product-img"><img src="images/kuromiscentederaser.jpeg" alt="Kuromi Scented Eraser"></div>
-                    <div class="product-title">Kuromi Scented Eraser</div>
-                    <div class="product-desc">Cute, smooth, and sweet-scented eraser featuring Kuromi</div>
-                    <div class="product-price" data-price="90">LKR 90</div>
-                </div>
-                <button class="action-btn btn-yellow" onclick="addToCart('Kuromi Scented Eraser', 90)">Add to Cart</button>
-            </div>
-
-            <!-- Labubu Blue -->
-            <div class="product-card card-mint" data-name="labubu blue">
-                <div>
-                    <div class="product-img"><img src="images/labubublue.jpeg" alt="Labubu Blue Sticky note"></div>
-                    <div class="product-title">Labubu Blue Sticky note</div>
-                    <div class="product-desc">Charming blue-themed Labubu collectible/stationery</div>
-                    <div class="product-price" data-price="200">LKR 200</div>
-                </div>
-                <button class="action-btn btn-mint" onclick="addToCart('Labubu Blue Sticky note', 200)">Add to Cart</button>
-            </div>
-
-            <!-- Labubu Eraser -->
-            <div class="product-card card-blue" data-name="labubu eraser">
-                <div>
-                    <div class="product-img"><img src="images/labubueraser.jpeg" alt="Labubu Character Eraser 4 pcs"></div>
-                    <div class="product-title">Labubu Character Eraser 4 pcs</div>
-                    <div class="product-desc">Detailed molded eraser featuring playful Labubu</div>
-                    <div class="product-price" data-price="40">LKR 40</div>
-                </div>
-                <button class="action-btn btn-blue" onclick="addToCart('Labubu Character Eraser 4 pcs', 40)">Add to Cart</button>
-            </div>
-
-            <!-- Labubu Pink -->
-            <div class="product-card card-lavender" data-name="labubu pink">
-                <div>
-                    <div class="product-img"><img src="images/labubupink.jpeg" alt="Labubu Pink Sticky note"></div>
-                    <div class="product-title">Labubu Pink Sticky note</div>
-                    <div class="product-desc">Sweet pink-themed Labubu collectible/stationery</div>
-                    <div class="product-price" data-price="200">LKR 200</div>
-                </div>
-                <button class="action-btn btn-lavender" onclick="addToCart('Labubu Pink Sticky note', 200)">Add to Cart</button>
-            </div>
-
-            <!-- Labubu Purple -->
-            <div class="product-card card-rose" data-name="labubu purple">
-                <div>
-                    <div class="product-img"><img src="images/labubupurple.jpeg" alt="Labubu Purple Sticky note"></div>
-                    <div class="product-title">Labubu Purple Sticky note</div>
-                    <div class="product-desc">Vibrant purple-themed Labubu collectible/stationery</div>
-                    <div class="product-price" data-price="200">LKR 200</div>
-                </div>
-                <button class="action-btn btn-rose" onclick="addToCart('Labubu Purple Sticky note', 200)">Add to Cart</button>
-            </div>
-
-            <!-- Labubu Red -->
-            <div class="product-card card-teal" data-name="labubu red">
-                <div>
-                    <div class="product-img"><img src="images/labubured.jpeg" alt="Labubu Red sticky note"></div>
-                    <div class="product-title">Labubu Red sticky note</div>
-                    <div class="product-desc">Striking red-themed Labubu collectible/stationery</div>
-                    <div class="product-price" data-price="200">LKR 200</div>
-                </div>
-                <button class="action-btn btn-teal" onclick="addToCart('Labubu Red sticky note', 200)">Add to Cart</button>
-            </div>
-
-            <!-- Labubu Scented Eraser -->
-            <div class="product-card card-periwinkle" data-name="labubu scented eraser">
-                <div>
-                    <div class="product-img"><img src="images/labubuscentederaser.jpeg" alt="Labubu Scented Eraser"></div>
-                    <div class="product-title">Labubu Scented Eraser</div>
-                    <div class="product-desc">Delightfully scented fun eraser with Labubu design</div>
-                    <div class="product-price" data-price="90">LKR 90</div>
-                </div>
-                <button class="action-btn btn-periwinkle" onclick="addToCart('Labubu Scented Eraser', 90)">Add to Cart</button>
-            </div>
-
-            <!-- Labubu Shape Sticky Notes -->
-            <div class="product-card card-pink" data-name="labubu shape sticky notes">
-                <div>
-                    <div class="product-img"><img src="images/labubushapestickynotes.jpeg" alt="Labubu Shaped Sticky Notes"></div>
-                    <div class="product-title">Labubu Shaped Sticky Notes</div>
-                    <div class="product-desc">Die-cut shaped sticky notes featuring Labubu character expressions</div>
-                    <div class="product-price" data-price="200">LKR 200</div>
-                </div>
-                <button class="action-btn btn-pink" onclick="addToCart('Labubu Shaped Sticky Notes', 200)">Add to Cart</button>
-            </div>
-
-            <!-- Lil Twin Stars -->
-            <div class="product-card card-peach" data-name="little twin stars">
-                <div>
-                    <div class="product-img"><img src="images/liltwinstars.jpeg" alt="Little Twin Stars Stationery Set"></div>
-                    <div class="product-title">Little Twin Stars large size wall stickers</div>
-                    <div class="product-desc">Dreamy pastel celestial wall stickers featuring Kiki & Lala</div>
-                    <div class="product-price" data-price="400">LKR 400</div>
-                </div>
-                <button class="action-btn btn-peach" onclick="addToCart('Little Twin Stars Stationery Set', 400)">Add to Cart</button>
-            </div>
-
-            <!-- Long Sticky Note -->
-            <div class="product-card card-yellow" data-name="long sticky note">
-                <div>
-                    <div class="product-img"><img src="images/longstickynote.jpeg" alt="Long Aesthetic Sticky Note Pad"></div>
-                    <div class="product-title">Long Aesthetic Sticky Note Pad</div>
-                    <div class="product-desc">Extended checklist and memo pad for daily planners</div>
-                    <div class="product-price" data-price="350">LKR 350</div>
-                </div>
-                <button class="action-btn btn-yellow" onclick="addToCart('Long Aesthetic Sticky Note Pad', 350)">Add to Cart</button>
-            </div>
-
-            <!-- Magic Box Eraser -->
-            <div class="product-card card-mint" data-name="magic box eraser">
-                <div>
-                    <div class="product-img"><img src="images/magicboxeraser.jpeg" alt="Magic Box Eraser Set"></div>
-                    <div class="product-title">Magic Box Eraser Set</div>
-                    <div class="product-desc">Surprise mystery box containing adorable miniature erasers</div>
-                    <div class="product-price" data-price="120">LKR 120</div>
-                </div>
-                <button class="action-btn btn-mint" onclick="addToCart('Magic Box Eraser Set', 120)">Add to Cart</button>
-            </div>
-
-            <!-- Melody Wall Sticker -->
-            <div class="product-card card-blue" data-name="melody wall sticker">
-                <div>
-                    <div class="product-img"><img src="images/melodywallsticker.jpeg" alt="My Melody Wall & Journal Stickers"></div>
-                    <div class="product-title">My Melody Wall & Journal Stickers</div>
-                    <div class="product-desc">Sweet pink decorative stickers featuring My Melody</div>
-                    <div class="product-price" data-price="150">LKR 150</div>
-                </div>
-                <button class="action-btn btn-blue" onclick="addToCart('My Melody Wall & Journal Stickers', 150)">Add to Cart</button>
-            </div>
-
-            <!-- Noodle Eraser -->
-            <div class="product-card card-lavender" data-name="noodle eraser">
-                <div>
-                    <div class="product-img"><img src="images/noodleeraser.jpeg" alt="Noodle Cup Miniature Eraser"></div>
-                    <div class="product-title">Noodle Cup Miniature Eraser</div>
-                    <div class="product-desc">Novelty blind-box style instant noodle container eraser</div>
-                    <div class="product-price" data-price="100">LKR 100</div>
-                </div>
-                <button class="action-btn btn-lavender" onclick="addToCart('Noodle Cup Miniature Eraser', 100)">Add to Cart</button>
-            </div>
-
-            <!-- Sanrio Sticky Note with Pen -->
-            <div class="product-card card-rose" data-name="sanrio sticky note with pen">
-                <div>
-                    <div class="product-img"><img src="images/sanriostickynotewithpen.jpeg" alt="Sanrio Sticky Note Pad & Pen Set"></div>
-                    <div class="product-title">Sanrio Sticky Note Pad & Pen Set</div>
-                    <div class="product-desc">matching sticky notes and mini pen</div>
-                    <div class="product-price" data-price="200">LKR 200</div>
-                </div>
-                <button class="action-btn btn-rose" onclick="addToCart('Sanrio Sticky Note Pad & Pen Set', 200)">Add to Cart</button>
-            </div>
-
-            <!-- Stitch Wall Sticker -->
-            <div class="product-card card-teal" data-name="stitch wall sticker">
-                <div>
-                    <div class="product-img"><img src="images/stichwallsticker.jpeg" alt="Stitch Wall Stickers"></div>
-                    <div class="product-title">Stitch Wall Stickers</div>
-                    <div class="product-desc">Playful tropical blue stickers featuring Disney's Stitch</div>
-                    <div class="product-price" data-price="150">LKR 150</div>
-                </div>
-                <button class="action-btn btn-teal" onclick="addToCart('Stitch Wall Stickers', 150)">Add to Cart</button>
-            </div>
-
-            <!-- Stitch Diary -->
-            <div class="product-card card-periwinkle" data-name="stitch diary">
-                <div>
-                    <div class="product-img"><img src="images/stitchdiary.jpeg" alt="Stitch Kawaii Diary"></div>
-                    <div class="product-title">Stitch Kawaii Diary</div>
-                    <div class="product-desc">fuzzy texture/journal diary featuring adorable Stitch artwork</div>
-                    <div class="product-price" data-price="990">LKR 990</div>
-                </div>
-                <button class="action-btn btn-periwinkle" onclick="addToCart('Stitch Kawaii Diary', 990)">Add to Cart</button>
-            </div>
-
-            <!-- Stitch Notebook -->
-            <div class="product-card card-pink" data-name="stitch notebook">
-                <div>
-                    <div class="product-img"><img src="images/stitchnotebook.jpeg" alt="Stitch Spiral Notebook"></div>
-                    <div class="product-title">Stitch Spiral Notebook</div>
-                    <div class="product-desc">Cute lined notebook with colorful Stitch cover design</div>
-                    <div class="product-price" data-price="250">LKR 250</div>
-                </div>
-                <button class="action-btn btn-pink" onclick="addToCart('Stitch Spiral Notebook', 250)">Add to Cart</button>
-            </div>
-
-            <!-- Stitch Ruler -->
-            <div class="product-card card-peach" data-name="stitch ruler">
-                <div>
-                    <div class="product-img"><img src="images/stitchruler.jpeg" alt="Stitch Ruler & Bookmark Set"></div>
-                    <div class="product-title">Stitch Ruler & Bookmark Set</div>
-                    <div class="product-desc">Fun plastic straight edge ruler featuring a floating Stitch charm</div>
-                    <div class="product-price" data-price="150">LKR 150</div>
-                </div>
-                <button class="action-btn btn-peach" onclick="addToCart('Stitch Ruler & Bookmark Set', 150)">Add to Cart</button>
-            </div>
-
-            <!-- Unicorn Paper Clips -->
-            <div class="product-card card-yellow" data-name="unicorn paper clips">
-                <div>
-                    <div class="product-img"><img src="images/unicornpaperclips.jpeg" alt="Unicorn Shaped Paper Clips Set"></div>
-                    <div class="product-title">Unicorn Shaped Paper Clips Set</div>
-                    <div class="product-desc">Assorted pastel coated metal paper clips set</div>
-                    <div class="product-price" data-price="300">LKR 300</div>
-                </div>
-                <button class="action-btn btn-yellow" onclick="addToCart('Unicorn Shaped Paper Clips Set', 300)">Add to Cart</button>
-            </div>
-
+    <!-- Product Detail Modal -->
+    <div class="product-modal" id="productModal">
+        <div class="modal-card" id="modalCardContent">
+            <!-- Dynamically populated via JavaScript -->
         </div>
     </div>
 
@@ -661,7 +402,7 @@
             <div>
                 <div class="cart-header">
                     <h3>🛍️ Your Shopping Cart</h3>
-                    <button class="close-cart" onclick="toggleCart()">&times;</button>
+                    <button class="close-modal" onclick="toggleCart()" style="position:static; font-size:1.5rem;">&times;</button>
                 </div>
                 <div class="cart-items-list" id="cartItemsList">
                     <p style="color: #8c787a; text-align: center; margin-top: 30px;">Your cart is empty!</p>
@@ -686,16 +427,14 @@
 
                 <button class="action-btn btn-pink" id="checkoutBtn" onclick="proceedToCheckout()" style="margin-bottom: 8px;">Proceed to Checkout</button>
 
-                <!-- Bank Info Box -->
                 <div class="bank-box" id="bankBox">
                     <h4>💳 Bank Transfer Details</h4>
-                    <p><strong>Bank Name:</strong> Commercial Bank / BOC<br>
-                    <strong>Account No:</strong> 1234567890<br>
-                    <strong>Account Name:</strong> Cherry Hearts LK</p>
+                    <p><strong>Bank Name:</strong> peoples bank<br>
+                    <strong>Account No:</strong> 148-200-140-019-997<br>
+                    <strong>Account Name:</strong> s d w rajapaksha</p>
                     <button class="action-btn btn-mint" onclick="finishPaying()" style="margin-top: 5px;">I'm Done Paying</button>
                 </div>
 
-                <!-- WhatsApp Upload Slip Button -->
                 <a href="#" id="whatsappUploadBtn" class="whatsapp-upload-btn" target="_blank">📤 Upload Slip & Order via WhatsApp</a>
             </div>
         </div>
@@ -706,18 +445,392 @@
     </footer>
 
     <script>
+        const products = [
+            {
+                name: "Hello Kitty Sticky Note Pads",
+                price: 180,
+                desc: "4 Variations (Red, Starry Purple, Strawberry, Lace)",
+                img: "images/hellokittystickynotes.jpeg",
+                cardClass: "card-pink",
+                btnClass: "btn-pink",
+                searchKey: "hello kitty sticky note pads",
+                variations: ["Red", "Starry Purple", "Strawberry", "Lace"]
+            },
+            {
+                name: "Roller Correction Tape",
+                price: 180,
+                desc: "Festive character-themed ergonomic grip correction tape",
+                img: "images/correctiontape.jpeg",
+                cardClass: "card-peach",
+                btnClass: "btn-peach",
+                searchKey: "correction tape",
+                variations: ["Standard", "Festive Edition"]
+            },
+            {
+                name: "Capybara Ruler & Bookmark Set",
+                price: 150,
+                desc: "Translucent nature-themed ruler with 3D Capybara figure",
+                img: "images/capybararuler.jpeg",
+                cardClass: "card-yellow",
+                btnClass: "btn-yellow",
+                searchKey: "capybara ruler",
+                variations: ["Green Nature", "Brown Cozy"]
+            },
+            {
+                name: "Capybara Decorative Wall Stickers design 1",
+                price: 150,
+                desc: "Cute waterproof stickers to decorate rooms",
+                img: "images/capybarawallsticker1.jpeg",
+                cardClass: "card-mint",
+                btnClass: "btn-mint",
+                searchKey: "capybara wall stickers",
+                variations: ["Design 1 - Pack A", "Design 1 - Pack B"]
+            },
+            {
+                name: "Capybara Sticker Pack design 2",
+                price: 150,
+                desc: "cozy capybara designs",
+                img: "images/capybarawallsticker2.jpeg",
+                cardClass: "card-blue",
+                btnClass: "btn-blue",
+                searchKey: "capybara wall stickers pack",
+                variations: ["Design 2 - Cozy Bath", "Design 2 - Relaxing"]
+            },
+            {
+                name: "Cinnamoroll Wall Stickers",
+                price: 150,
+                desc: "Sweet pastel cloud-themed stickers featuring Cinnamoroll",
+                img: "images/cinnomorollwallsticker.jpeg",
+                cardClass: "card-lavender",
+                btnClass: "btn-lavender",
+                searchKey: "cinnamoroll wall stickers",
+                variations: ["Pastel Cloud", "Dreamy Star"]
+            },
+            {
+                name: "Araliya Hair/Stationery Clips",
+                price: 100,
+                desc: "Charming floral aesthetic clips for styling or organizing",
+                img: "images/araliyaclips.jpeg",
+                cardClass: "card-rose",
+                btnClass: "btn-rose",
+                searchKey: "araliya clips",
+                variations: ["White Araliya", "Yellow Araliya", "Pink Araliya"]
+            },
+            {
+                name: "Beaded Claw Clips",
+                price: 200,
+                desc: "Coquette and pearl-accented claw clips",
+                img: "images/beadedclaws.jpeg",
+                cardClass: "card-teal",
+                btnClass: "btn-teal",
+                searchKey: "beaded claws",
+                variations: ["Pearl White", "Blush Pink"]
+            },
+            {
+                name: "Kuromi Aesthetic Notebook",
+                price: 300,
+                desc: "Edgy-cute spiral notebook for journaling and notes",
+                img: "images/kurominotebook.jpeg",
+                cardClass: "card-periwinkle",
+                btnClass: "btn-periwinkle",
+                searchKey: "kuromi notebook",
+                variations: ["Lined Pages", "Grid Pages"]
+            },
+            {
+                name: "Kuromi purple Sticky Note",
+                price: 200,
+                desc: "Adorable purple themed Kuromi sticky note pad",
+                img: "images/kuromipinkstickynote.jpeg",
+                cardClass: "card-pink",
+                btnClass: "btn-pink",
+                searchKey: "kuromi purple sticky note",
+                variations: ["Square Pad", "Die-cut Pad"]
+            },
+            {
+                name: "Kuromi pink Sticky Note",
+                price: 200,
+                desc: "Signature pink aesthetic Kuromi sticky notes",
+                img: "images/kuromipurplestickynote.jpeg",
+                cardClass: "card-peach",
+                btnClass: "btn-peach",
+                searchKey: "kuromi pink sticky note",
+                variations: ["Square Pad", "Die-cut Pad"]
+            },
+            {
+                name: "Kuromi Scented Eraser",
+                price: 90,
+                desc: "Cute, smooth, and sweet-scented eraser featuring Kuromi",
+                img: "images/kuromiscentederaser.jpeg",
+                cardClass: "card-yellow",
+                btnClass: "btn-yellow",
+                searchKey: "kuromi scented eraser",
+                variations: ["Grape Scent", "Strawberry Scent"]
+            },
+            {
+                name: "Labubu Blue Sticky note",
+                price: 200,
+                desc: "Charming blue-themed Labubu collectible/stationery",
+                img: "images/labubublue.jpeg",
+                cardClass: "card-mint",
+                btnClass: "btn-mint",
+                searchKey: "labubu blue",
+                variations: ["Standard", "Mini"]
+            },
+            {
+                name: "Labubu Character Eraser 4 pcs",
+                price: 40,
+                desc: "Detailed molded eraser featuring playful Labubu",
+                img: "images/labubueraser.jpeg",
+                cardClass: "card-blue",
+                btnClass: "btn-blue",
+                searchKey: "labubu eraser",
+                variations: ["4-pc Set"]
+            },
+            {
+                name: "Labubu Pink Sticky note",
+                price: 200,
+                desc: "Sweet pink-themed Labubu collectible/stationery",
+                img: "images/labubupink.jpeg",
+                cardClass: "card-lavender",
+                btnClass: "btn-lavender",
+                searchKey: "labubu pink",
+                variations: ["Standard", "Mini"]
+            },
+            {
+                name: "Labubu Purple Sticky note",
+                price: 200,
+                desc: "Vibrant purple-themed Labubu collectible/stationery",
+                img: "images/labubupurple.jpeg",
+                cardClass: "card-rose",
+                btnClass: "btn-rose",
+                searchKey: "labubu purple",
+                variations: ["Standard", "Mini"]
+            },
+            {
+                name: "Labubu Red sticky note",
+                price: 200,
+                desc: "Striking red-themed Labubu collectible/stationery",
+                img: "images/labubured.jpeg",
+                cardClass: "card-teal",
+                btnClass: "btn-teal",
+                searchKey: "labubu red",
+                variations: ["Standard", "Mini"]
+            },
+            {
+                name: "Labubu Scented Eraser",
+                price: 90,
+                desc: "Delightfully scented fun eraser with Labubu design",
+                img: "images/labubuscentederaser.jpeg",
+                cardClass: "card-periwinkle",
+                btnClass: "btn-periwinkle",
+                searchKey: "labubu scented eraser",
+                variations: ["Berry Scent", "Vanilla Scent"]
+            },
+            {
+                name: "Labubu Shaped Sticky Notes",
+                price: 200,
+                desc: "Die-cut shaped sticky notes featuring Labubu character expressions",
+                img: "images/labubushapestickynotes.jpeg",
+                cardClass: "card-pink",
+                btnClass: "btn-pink",
+                searchKey: "labubu shape sticky notes",
+                variations: ["Expression A", "Expression B"]
+            },
+            {
+                name: "Little Twin Stars wall stickers large",
+                price: 400,
+                desc: "Dreamy pastel celestial wall stickers featuring Kiki & Lala",
+                img: "images/liltwinstars.jpeg",
+                cardClass: "card-peach",
+                btnClass: "btn-peach",
+                searchKey: "little twin stars",
+                variations: ["Pink Theme", "Blue Theme"]
+            },
+            {
+                name: "Long Aesthetic Sticky Note Pad",
+                price: 350,
+                desc: "Extended checklist and memo pad for daily planners",
+                img: "images/longstickynote.jpeg",
+                cardClass: "card-yellow",
+                btnClass: "btn-yellow",
+                searchKey: "long sticky note",
+                variations: ["Daily Planner", "Checklist Style"]
+            },
+            {
+                name: "Magic Box Eraser Set",
+                price: 120,
+                desc: "Surprise mystery box containing adorable miniature erasers",
+                img: "images/magicboxeraser.jpeg",
+                cardClass: "card-mint",
+                btnClass: "btn-mint",
+                searchKey: "magic box eraser",
+                variations: ["Mystery Box Set"]
+            },
+            {
+                name: "My Melody Wall & Journal Stickers",
+                price: 150,
+                desc: "Sweet pink decorative stickers featuring My Melody",
+                img: "images/melodywallsticker.jpeg",
+                cardClass: "card-blue",
+                btnClass: "btn-blue",
+                searchKey: "melody wall sticker",
+                variations: ["Sheet 1", "Sheet 2"]
+            },
+            {
+                name: "Noodle Cup Miniature Eraser",
+                price: 100,
+                desc: "Novelty blind-box style instant noodle container eraser",
+                img: "images/noodleeraser.jpeg",
+                cardClass: "card-lavender",
+                btnClass: "btn-lavender",
+                searchKey: "noodle eraser",
+                variations: ["Chicken Flavor", "Seafood Flavor", "Spicy Flavor"]
+            },
+            {
+                name: "Sanrio Sticky Note Pad & Pen Set",
+                price: 200,
+                desc: "matching sticky notes and mini pen",
+                img: "images/sanriostickynotewithpen.jpeg",
+                cardClass: "card-rose",
+                btnClass: "btn-rose",
+                searchKey: "sanrio sticky note with pen",
+                variations: ["Hello Kitty", "Cinnamoroll", "Kuromi", "My Melody"]
+            },
+            {
+                name: "Stitch Wall Stickers",
+                price: 150,
+                desc: "Playful tropical blue stickers featuring Disney's Stitch",
+                img: "images/stichwallsticker.jpeg",
+                cardClass: "card-teal",
+                btnClass: "btn-teal",
+                searchKey: "stitch wall sticker",
+                variations: ["Tropical Set", "Surfing Set"]
+            },
+            {
+                name: "Stitch Kawaii Diary",
+                price: 990,
+                desc: "fuzzy texture/journal diary featuring adorable Stitch artwork",
+                img: "images/stitchdiary.jpeg",
+                cardClass: "card-periwinkle",
+                btnClass: "btn-periwinkle",
+                searchKey: "stitch diary",
+                variations: ["Fuzzy Blue", "Plush Purple"]
+            },
+            {
+                name: "Stitch Spiral Notebook",
+                price: 250,
+                desc: "Cute lined notebook with colorful Stitch cover design",
+                img: "images/stitchnotebook.jpeg",
+                cardClass: "card-pink",
+                btnClass: "btn-pink",
+                searchKey: "stitch notebook",
+                variations: ["Cover A", "Cover B"]
+            },
+            {
+                name: "Stitch Ruler & Bookmark Set",
+                price: 150,
+                desc: "Fun plastic straight edge ruler featuring a floating Stitch charm",
+                img: "images/stitchruler.jpeg",
+                cardClass: "card-peach",
+                btnClass: "btn-peach",
+                searchKey: "stitch ruler",
+                variations: ["Blue Charm", "Pink Charm"]
+            },
+            {
+                name: "Unicorn Shaped Paper Clips Set",
+                price: 300,
+                desc: "Assorted pastel coated metal paper clips set",
+                img: "images/unicornpaperclips.jpeg",
+                cardClass: "card-yellow",
+                btnClass: "btn-yellow",
+                searchKey: "unicorn paper clips",
+                variations: ["Pastel Box Set"]
+            }
+        ];
+
         let cart = [];
         const shippingFee = 300;
+
+        function renderProducts(items) {
+            let grid = document.getElementById('productsGrid');
+            grid.innerHTML = '';
+
+            items.forEach((p, index) => {
+                let card = document.createElement('div');
+                card.className = `product-card ${p.cardClass}`;
+                card.setAttribute('data-name', p.searchKey);
+                card.onclick = () => openProductModal(p);
+
+                card.innerHTML = `
+                    <div>
+                        <div class="product-img"><img src="images/${p.img.split('/').pop()}" alt="${p.name}"></div>
+                        <div class="product-title">${p.name}</div>
+                        <div class="product-desc">${p.desc}</div>
+                        <div class="product-price">LKR ${p.price}</div>
+                    </div>
+                    <button class="action-btn ${p.btnClass}" onclick="event.stopPropagation(); openProductModalByName('${p.name}')">View Product</button>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Initialize grid on load
+        renderProducts(products);
+
+        function openProductModalByName(name) {
+            let product = products.find(p => p.name === name);
+            if (product) openProductModal(product);
+        }
+
+        function openProductModal(p) {
+            let modal = document.getElementById('productModal');
+            let content = document.getElementById('modalCardContent');
+
+            let optionsHtml = '';
+            if (p.variations && p.variations.length > 0) {
+                optionsHtml = `
+                    <div class="variation-select-group">
+                        <label for="modalVariationSelect">Choose Variation:</label>
+                        <select id="modalVariationSelect" class="variation-select">
+                            ${p.variations.map(v => `<option value="${v}">${v}</option>`).join('')}
+                        </select>
+                    </div>
+                `;
+            }
+
+            content.innerHTML = `
+                <button class="close-modal" onclick="closeProductModal()">&times;</button>
+                <div class="modal-img-container">
+                    <img src="images/${p.img.split('/').pop()}" alt="${p.name}">
+                </div>
+                <div class="product-title" style="font-size: 1.4rem;">${p.name}</div>
+                <div class="product-desc" style="font-size: 0.95rem; margin-bottom: 15px;">${p.desc}</div>
+                <div class="product-price" style="font-size: 1.3rem;">LKR ${p.price}</div>
+                ${optionsHtml}
+                <button class="action-btn ${p.btnClass}" style="margin-top: 15px; padding: 12px; font-size: 1rem;" onclick="addCurrentToCart('${p.name}', ${p.price})">Add to Cart</button>
+            `;
+
+            modal.style.display = 'flex';
+        }
+
+        function closeProductModal() {
+            document.getElementById('productModal').style.display = 'none';
+        }
+
+        function addCurrentToCart(name, price) {
+            let selectEl = document.getElementById('modalVariationSelect');
+            let variation = selectEl ? selectEl.value : "Standard";
+            
+            let fullName = `${name} (${variation})`;
+            cart.push({ name: fullName, price: price });
+            updateCartUI();
+            closeProductModal();
+            alert(fullName + " added to cart! 🎀");
+        }
 
         function toggleCart() {
             let modal = document.getElementById('cartModal');
             modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
-        }
-
-        function addToCart(name, price) {
-            cart.push({ name, price });
-            updateCartUI();
-            alert(name + " added to cart! 🎀");
         }
 
         function removeFromCart(index) {
@@ -781,15 +894,19 @@
 
         function searchProducts() {
             let input = document.getElementById('searchInput').value.toLowerCase();
-            let cards = document.getElementsByClassName('product-card');
+            let filtered = products.filter(p => p.searchKey.toLowerCase().includes(input) || p.name.toLowerCase().includes(input));
+            renderProducts(filtered);
+        }
 
-            for (let i = 0; i < cards.length; i++) {
-                let name = cards[i].getAttribute('data-name');
-                if (name.includes(input)) {
-                    cards[i].style.display = "flex";
-                } else {
-                    cards[i].style.display = "none";
-                }
+        // Close modal when clicking outside content area
+        window.onclick = function(event) {
+            let productModal = document.getElementById('productModal');
+            let cartModal = document.getElementById('cartModal');
+            if (event.target === productModal) {
+                closeProductModal();
+            }
+            if (event.target === cartModal) {
+                toggleCart();
             }
         }
     </script>
